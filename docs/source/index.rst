@@ -1,5 +1,5 @@
 Welcome to WRF-GC!
-===================================
+===================
 
 **WRF-GC** (WRF coupled with GEOS-Chem chemistry) is an online coupled model based on the regional meteorology model, WRF (Weather Research and Forecasting Model), and the GEOS-Chem chemical transport model.
 
@@ -20,8 +20,26 @@ Contents
 --------
 
 .. toctree::
+   :maxdepth: 1
+   :caption: Introduction
 
-   key-concepts
-   getting-started
-   faq
-   resources
+   index.rst
+   key-concepts.rst
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Getting started
+
+   getting-started.rst
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Diving deeper
+
+   faq.rst
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Help & Reference
+
+   resources.rst
