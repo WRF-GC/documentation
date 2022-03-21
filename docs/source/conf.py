@@ -2,12 +2,12 @@
 
 # -- Project information
 
-project = 'Lumache'
-copyright = '2021, Graziella'
-author = 'Graziella'
+project = 'WRF-GC'
+copyright = '2018-2022 Haipeng Lin, Xu Feng, Tzung-May Fu'
+author = 'The WRF-GC Authors'
 
-release = '0.1'
-version = '0.1.0'
+release = '2.0'
+version = '2.0.0'
 
 # -- General configuration
 
