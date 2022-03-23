@@ -20,8 +20,9 @@ Contents
 --------
 
 .. toctree::
-   :maxdepth: 0
+   :maxdepth: 1
    :caption: Introduction
+   :hidden:
 
    index.rst
    key-concepts.rst
@@ -29,17 +30,20 @@ Contents
 .. toctree::
    :maxdepth: 1
    :caption: Getting started
+   :hidden:
 
    getting-started.rst
 
 .. toctree::
    :maxdepth: 2
    :caption: Diving deeper
+   :hidden:
 
    faq.rst
 
 .. toctree::
    :maxdepth: 1
    :caption: Help & Reference
+   :hidden:
 
    resources.rst
