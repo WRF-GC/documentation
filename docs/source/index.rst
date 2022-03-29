@@ -24,7 +24,6 @@ Contents
    :caption: Introduction
    :hidden:
 
-   index.rst
    key-concepts.rst
 
 .. toctree::
@@ -39,6 +38,7 @@ Contents
    :caption: Diving deeper
    :hidden:
 
+   common-errors.rst
    faq.rst
 
 .. toctree::

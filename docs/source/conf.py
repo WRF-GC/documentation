@@ -3,7 +3,7 @@
 # -- Project information
 
 project = 'WRF-GC'
-copyright = '2018-2022 Haipeng Lin, Xu Feng, Tzung-May Fu'
+copyright = '2018-2022 The WRF-GC Authors'
 author = 'The WRF-GC Authors'
 
 release = '2.0'
