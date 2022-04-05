@@ -83,6 +83,11 @@ For emission inventories from WRF-Chem (e.g., prepared by `prep_chem_sources`), 
 Running and configuration
 -------------------------
 
+Can I use WRF-GC to run Hg simulation/CH4 simulation/CO2 simulation?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+No, WRF-GC only supports chemical mechanisms for full-chemistry simulations. Xu et al. (2022) has developed a new version (WRF-GC-Hg v1.0) for atmospheric Hg. You can refer to `Xu et al., 2022 on GMD <https://gmd.copernicus.org/preprints/gmd-2021-404/>`__ for more information on the development of Hg simulation on WRF-GC.
+
 Where are the configuration files for WRF-GC?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
