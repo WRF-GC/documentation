@@ -26,6 +26,11 @@ I want to build a cluster for my lab to run WRF-GC. What do you recommend?
 
 Hardware is ever-changing, but both recent AMD EPYC and Intel Xeon processors will work. If you are using an AMD system, you may want to use GNU compilers for better performance. Storage capacity is generally the more, the better, because WRF-GC outputs are fairly large as they include the 220+ species and all met fields computed by WRF and GEOS-Chem.
 
+Does WRF-GC require ESMF?
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+No.
+
 Input
 -----
 
