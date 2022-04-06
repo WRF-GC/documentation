@@ -83,10 +83,15 @@ For emission inventories from WRF-Chem (e.g., prepared by `prep_chem_sources`), 
 Running and configuration
 -------------------------
 
-Can I use WRF-GC to run Hg simulation/CH4 simulation/CO2 simulation?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Can I use WRF-GC to run Hg/CH4/CO2 specialty simulations?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-No, WRF-GC only supports chemical mechanisms for full-chemistry simulations. Xu et al. (2022) has developed a new version (WRF-GC-Hg v1.0) for atmospheric Hg. You can refer to `Xu et al., 2022 on GMD <https://gmd.copernicus.org/preprints/gmd-2021-404/>`__ for more information on the development of Hg simulation on WRF-GC.
+Generally not out of the box. WRF-GC only supports chemical mechanisms for full-chemistry simulations. Xu et al. (2022) has developed a new version (WRF-GC-Hg v1.0) for atmospheric Hg. You can refer to `Xu et al., 2022 on GMD <https://gmd.copernicus.org/preprints/gmd-2021-404/>`__ for more information on the development of Hg simulation on WRF-GC.
+
+Can I use WRF-GC with tropchem (troposphere-only chemistry)?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Generally not out of the box. By default, UCX will run above the tropopause, into the stratosphere. Note that WRF model top is generally lower than GEOS-Chem (which goes to 0.1 hPa). It is recommended to leave this at the default configuration - note that recent versions of GEOS-Chem have also retired tropchem.
 
 Where are the configuration files for WRF-GC?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -121,6 +126,11 @@ What is the output format? What are some tools to process them?
 
 The output is in ``wrfout_`` netCDF format used by WRF, and WRF-Chem. As such, tools to process WRF and WRF-Chem outputs may be useful for WRF-GC with some species name modifications.
 
+The outputs are so large! Can I compress them?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+You may be able to use netCDF tools to only get the variables you want. At the moment, there is no capability to customize the list of species output by WRF-GC, so they'll all be in one file.
+
 Can I output GEOS-Chem diagnostics?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -136,6 +146,27 @@ Does WRF-GC support MPI or OpenMP parallelization?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 At present, only MPI. OpenMP routines were removed during the development of WRF-GC.
+
+Which MPI does WRF-GC support?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+mvapich was used for development, but OpenMPI, and Intel MPI should also work. When configuring WRF-GC you are asked to fill in the correct MPI library in the ``ESMF_COMM`` environment variable. ``openmpi``, ``mvapich2``, and ``intelmpi`` are supported.
+
+If you have a different MPI communicator for compiling, you can try to edit these options with the correct linking flags for your MPI in ``WRF/chem/Makefile``:
+
+.. code-block::
+
+	# Specify MPI-specific options (hplin, 6/23/19)
+	ifeq ($(ESMF_COMM),openmpi)
+		MPI_OPT := $(shell mpif90 --showme:link)
+		MPI_OPT += $(shell mpicxx --showme:link)
+	else ifeq ($(ESMF_COMM),mvapich2)
+		MPI_OPT := -lmpich -lmpichf90
+	else ifeq ($(ESMF_COMM),intelmpi)
+		MPI_OPT := -lmpi
+	else
+		$(error Unknown MPI communicator ESMF_COMM, valid are openmpi or mvapich2)
+	endif
 
 Does WRF-GC support parallel I/O by WRF?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
