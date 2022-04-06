@@ -100,6 +100,16 @@ Check the file that it is pointing to. There are a few likely reasons:
 * The file was corrupted / not fully downloaded. Try opening it with ``ncview`` and checking!
 * This inventory does not have the appropriate file for this date/time.
 
+mozbc related errors
+---------------------
+
+mo_wrfchem_lib.o: ... undefined reference to nf_open_ / nf_inq_varid_ / nf_get_vara_real_  / nf_close_ / nf_def_var_
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This error when compiling ``mozbc`` is usually because the path to netCDF library, ``NETCDF_DIR``, is incorrect.
+
+Make sure that your ``NETCDF_DIR`` is set to the root directory of your netCDF installation, where under ``$NETCDF_DIR/lib`` you can find the appropriate netCDF library (``libnetcdff.so``).
+
 Red herrings
 -------------
 If you see anything on this list, this is not the root cause - **this means that there's an error somewhere else!**
