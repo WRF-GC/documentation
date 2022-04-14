@@ -38,7 +38,7 @@ Generally you need to update ``standard.eqn`` (KPP), ``species_database_mod.F90`
 WRF-GC coupler
 --------------
 
-The species need to be passed to and from WRF at every time step. There are three locations to edit:
+The species need to be passed to and from WRF at every time step. There are three locations to edit in the WRF-GC coupler, located in ``WRF/chem/wrfgc_convert_state_mod.F``.
 
 1. **Species index declarations**, e.g.,
 
