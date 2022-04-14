@@ -15,7 +15,7 @@ Here is a list of concepts for WRF-GC that may be useful for using and developin
       An online, two-way coupling of WRF and GEOS-Chem into one model, using the **WRF-GC Coupler**. The two models do not run separately - WRF-GC runs through WRF and the coupler will run GEOS-Chem chemistry at the appropriate time steps. Running WRF-GC is very similar to running `WRF-Chem <https://www2.acom.ucar.edu/wrf-chem>`_.
 
    HEMCO
-      The Harmonized Emissions Component, an on-line emissions component that WRF-GC uses for emissions. WRF-GC uses a modified version of HEMCO for coupling to WRF-GC and is described by Lin et al., 2022 [#f2]_.
+      The Harmonized Emissions Component, an on-line emissions component that WRF-GC uses for emissions. WRF-GC uses a modified version of HEMCO for coupling to WRF-GC and is described by Lin et al., 2021 [#f2]_.
 
 .. rubric:: Footnotes
 
