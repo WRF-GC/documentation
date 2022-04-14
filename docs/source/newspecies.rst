@@ -92,3 +92,6 @@ Similarly add your species here.
 * Clean all WRF-GC compiled code. In the ``WRF`` directory, run ``./clean -a``.
 * Reconfigure WRF. ``./configure -hyb`` (WRF version 3) or ``./configure`` (WRF version 4). This is as if you are reinstalling WRF-GC.
 * Compile WRF-GC.  ``./compile em_real``.
+
+.. warning::
+	Be careful to back up your configuration files. Every WRF-GC recompile **will reset the namelist and configuration files.**
