@@ -77,14 +77,14 @@ Add your species similarly.
 WRF registry
 -------------
 
-Let WRF know of this species's existence by editing ``WRF/chem/Registry.chem``:
+Let WRF know of this species's existence by editing ``WRF/chem/registry.chem``. Search for:
 
 .. code-block::
 
-	state   real   a3o2        ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "a3o2"          "A3O2 mixing ratio"        "ppmv"
+    state   real   a3o2        ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "a3o2"          "A3O2 mixing ratio"        "ppmv"
     state   real   acet        ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "acet"          "ACETONE mixing ratio"     "ppmv"
 
-Similarly add your species here.
+Similarly add your species here. **Make sure you search registry.chem to make sure you have not defined a species twice.** A lot of names are reserved for compatibility with WRF-Chem code and we have no control over this. **If a name is already defined you can get away with reusing it directly.**
 
 **Every time you update the Registry, you need to completely recompile WRF-GC.** There is no shortcut to this, so make sure your edit of the registry is correct or the compile process will crash very early. Steps:
 
