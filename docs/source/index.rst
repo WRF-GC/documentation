@@ -5,7 +5,7 @@ Welcome to WRF-GC!
 
 This is the new web-based WRF-GC documentation. We are actively working on adding content.
 
-Check out `the WRF-GC website <https://fugroup.org/index.php/WRF-GC>`_ at the `Atmospheric Chemistry and Climate Group at SUSTech <https://fugroup.org/>`_
+Check out `the WRF-GC website <https://fugroup.org/index.php/WRF-GC>`_ at the `Atmospheric Chemistry and Climate Group at SUSTech <https://fugroup.org/>`_.
 
 .. note::
 
@@ -13,8 +13,8 @@ Check out `the WRF-GC website <https://fugroup.org/index.php/WRF-GC>`_ at the `A
 
 The key references for WRF-GC are:
 
-* **Lin et al., 2020**: Lin, H., Feng, X., Fu, T.-M., Tian, H., Ma, Y., Zhang, L., Jacob, D. J., Yantosca, R. M., Sulprizio, M. P., Lundgren, E. W., Zhuang, J., Zhang, Q., Lu, X., Zhang, L., Shen, L., Guo, J., Eastham, S. D., and Keller, C. A.: WRF-GC (v1.0): online coupling of WRF (v3.9.1.1) and GEOS-Chem (v12.2.1) for regional atmospheric chemistry modeling – Part 1: Description of the one-way model, Geosci. Model Dev., 13, 3241–3265, https://doi.org/10.5194/gmd-13-3241-2020, 2020. 
-* **Feng et al., 2021**: Feng, X., Lin, H., Fu, T.-M., Sulprizio, M. P., Zhuang, J., Jacob, D. J., Tian, H., Ma, Y., Zhang, L., Wang, X., Chen, Q., and Han, Z.: WRF-GC (v2.0): online two-way coupling of WRF (v3.9.1.1) and GEOS-Chem (v12.7.2) for modeling regional atmospheric chemistry–meteorology interactions, Geosci. Model Dev., 14, 3741–3768, https://doi.org/10.5194/gmd-14-3741-2021, 2021. 
+* **Lin et al., 2020**: Lin, H., Feng, X., Fu, T.-M., Tian, H., Ma, Y., Zhang, L., Jacob, D. J., Yantosca, R. M., Sulprizio, M. P., Lundgren, E. W., Zhuang, J., Zhang, Q., Lu, X., Zhang, L., Shen, L., Guo, J., Eastham, S. D., and Keller, C. A.: *WRF-GC (v1.0): online coupling of WRF (v3.9.1.1) and GEOS-Chem (v12.2.1) for regional atmospheric chemistry modeling – Part 1: Description of the one-way model*, Geosci. Model Dev., 13, 3241–3265, https://doi.org/10.5194/gmd-13-3241-2020, 2020. 
+* **Feng et al., 2021**: Feng, X., Lin, H., Fu, T.-M., Sulprizio, M. P., Zhuang, J., Jacob, D. J., Tian, H., Ma, Y., Zhang, L., Wang, X., Chen, Q., and Han, Z.: *WRF-GC (v2.0): online two-way coupling of WRF (v3.9.1.1) and GEOS-Chem (v12.7.2) for modeling regional atmospheric chemistry–meteorology interactions*, Geosci. Model Dev., 14, 3741–3768, https://doi.org/10.5194/gmd-14-3741-2021, 2021. 
 
 Most useful pages
 ------------------
@@ -29,6 +29,7 @@ Most useful pages
    :hidden:
 
    key-concepts.rst
+   faq.rst
 
 .. toctree::
    :maxdepth: 1
@@ -37,6 +38,7 @@ Most useful pages
 
    getting-started.rst
    preflight-checklist.rst
+   icbc.rst
 
 .. toctree::
    :maxdepth: 2
@@ -44,7 +46,7 @@ Most useful pages
    :hidden:
 
    common-errors.rst
-   faq.rst
+   newspecies.rst
 
 .. toctree::
    :maxdepth: 1
