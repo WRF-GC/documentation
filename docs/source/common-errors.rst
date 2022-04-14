@@ -133,11 +133,6 @@ Red herrings
 -------------
 If you see anything on this list, this is not the root cause - **this means that there's an error somewhere else!**
 
-Cannot find -lGCHPint
-^^^^^^^^^^^^^^^^^^^^^^
-
-This is not an error, ignore. If you cannot successfully compile WRF-GC, there is an error above in the compile log.
-
 HEMCO ERROR: MaxNest too low, cannot enter GET_TIMEIDX (hco_read_std_mod.F90)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -164,6 +159,16 @@ forrtl: severe (174): SIGSEGV, segmentation fault occurred
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Check if your system has enough memory and try to run with ``ulimit -c unlimited``, ``ulimit -s unlimited``.
+
+This may also mean there is an error somewhere else upstream.
+
+Not actually errors
+--------------------
+
+Cannot find -lGCHPint
+^^^^^^^^^^^^^^^^^^^^^^
+
+This is not an error, ignore. If you cannot successfully compile WRF-GC, there is an error above in the compile log.
 
 Trapping levels are weird and they should not be equal
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

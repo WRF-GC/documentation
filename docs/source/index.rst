@@ -32,6 +32,7 @@ Contents
    :hidden:
 
    getting-started.rst
+   preflight-checklist.rst
 
 .. toctree::
    :maxdepth: 2
