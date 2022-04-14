@@ -11,6 +11,9 @@ We hope you don't run into these errors. But if you do, we hope they will be a u
 .. note::
 	WRF-GC has several output files. Most GEOS-Chem output is in the root CPU output file, ``rsl.out.0000``. **Look in this file for any GEOS-Chem related errors.** HEMCO-related errors are in ``HEMCO.log``. WRF-related errors can be in any of the files numbered ``rsl.error.*`` and ``rsl.out.*``. You may want to use ``tail -n 5 rsl.* | less`` to quickly look at all log files to identify errors.
 
+.. warning::
+	THe HEMCO error log, ``HEMCO.log``, only writes errors/warnings from the root process. In order to see HEMCO errors for all processes, edit ``HEMCO_Config.rc`` and set ``LogFile`` to ``*``. Then you will be able to see HEMCO logs for all processes in the ``rsl.out.*`` files.
+
 Compiling errors
 -----------------
 
@@ -129,6 +132,13 @@ forrtl: severe (408): fort: (2): Subscript #1 of the array LOC has value 11 whic
 
 This means that there is an error in ``HEMCO.log`` - check the HEMCO log instead! Maybe inventories are missing, etc.
 
+forrtl: severe (408): fort: (2): Subscript #1 of the array ZPJ has value 1 which is greater than the upper bound of -1
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Same! Check `rsl.error.` files for **another error** - it may be hundreds of lines above (searching for ``GEOS-Chem ERROR:`` or ``REQUIRED FILE NOT FOUND`` helps).
+
+This error indicates that another error occurred somewhere upstream.
+
 forrtl: error (78): process killed (SIGTERM)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -143,3 +153,8 @@ Trapping levels are weird and they should not be equal
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This doesn't seem to be an issue. If your run was interrupted, there might be an error elsewhere.
+
+47 more processes have sent help message help-mpi-btl-openib.txt / no device params found
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This is usually not an issue. If your run stopped, check all the other run files.
