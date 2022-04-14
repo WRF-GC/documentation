@@ -92,6 +92,22 @@ If this is happening near the coast, this is a bug with the ParaNOx extension. G
 
 Changing ``on`` to ``off``. We are looking for a more permanent fix.
 
+FAST-JX (RD_XXX): REQUIRED FILE NOT FOUND
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Make sure you have updated ``input.geos``'s configuration with the correct path to the Fast-JX CHEM_INPUTS:
+
+.. code-block::
+	%%% PHOTOLYSIS MENU %%% :
+	FAST-JX directory       : /n/holyscratch01/external_repos/GEOS-CHEM/gcgrid/data/ExtData/CHEM_INPUTS/FAST_JX/v2019-10/
+
+Make sure to update the path on top of ``input.geos`` as well:
+
+.. code-block::
+	Root data directory     : /n/holyscratch01/external_repos/GEOS-CHEM/gcgrid/data/ExtData/
+
+Data can be obtained from `GEOS-Chem input data <https://sites.wustl.edu/acag/geos-chem/geos-chem-input-data/>`__ at WUSTL.
+
 
 HEMCO related errors
 --------------------
