@@ -141,8 +141,16 @@ HEMCO ERROR: Invalid time index in (file)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Check the file that it is pointing to. There are a few likely reasons:
+
 * The file was corrupted / not fully downloaded. Try opening it with ``ncview`` and checking!
 * This inventory does not have the appropriate file for this date/time.
+
+If (and only if) you have daily updating emissions data stored in monthly files and you are getting this error at the last day of the month, you are being affected `by this bug <https://github.com/geoschem/HEMCO/issues/141>`_. There is a temporary fix for WRF-GC available, contact Haipeng Lin for details.
+
+GEOS-Chem ERROR: Error encountered in "HCO_Run"! -> at HCOI_GC_Run (in module GeosCore/hcoi_gc_main_mod.F90)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This is a HEMCO error. Check ``HEMCO.log``. If nothing is there, change ``LogFile`` to ``*`` in ``HEMCO_Config.rc``, and check **all** ``rsl.out.*`` files after re-running the model.
 
 mozbc related errors
 ---------------------
