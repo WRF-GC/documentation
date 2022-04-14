@@ -19,7 +19,7 @@ As a reminder, the GEOS-Chem source code is unmodified and resides in ``WRF/chem
 Adding additional code
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-WRF-GC is based upon GCHP technology by Long et al., 2015 and Eastham et al., 2018. **The equivalent to ``main.F`` which most GEOS-Chem users are used to is ``chem/gc/GCHP/gigc_chunk_mod.F90``.** You may find most of the subroutine calls within the subroutine ``GIGC_Chunk_Run``.
+WRF-GC is based upon GCHP technology by Long et al., 2015 [#f1]_ and Eastham et al., 2018 [#f2]_. The equivalent to ``main.F`` which most GEOS-Chem users are used to is ``chem/gc/GCHP/gigc_chunk_mod.F90``. You may find most of the subroutine calls within the subroutine ``GIGC_Chunk_Run``.
 
 We recommend reading ``main.F`` and ``gigc_chunk_mod.F90`` and figuring out where your code should be positioned.
 
@@ -95,3 +95,9 @@ Similarly add your species here. **Make sure you search registry.chem to make su
 
 .. warning::
 	Be careful to back up your configuration files. Every WRF-GC recompile **will reset the namelist and configuration files.**
+
+.. rubric:: Footnotes
+
+.. [#f1] Long, M. S., Yantosca, R., Nielsen, J. E., Keller, C. A., da Silva, A., Sulprizio, M. P., Pawson, S., and Jacob, D. J.: Development of a grid-independent GEOS-Chem chemical transport model (v9-02) as an atmospheric chemistry module for Earth system models, Geosci. Model Dev., 8, 595–602, https://doi.org/10.5194/gmd-8-595-2015, 2015. 
+
+.. [#f2] Eastham, S. D., Long, M. S., Keller, C. A., Lundgren, E., Yantosca, R. M., Zhuang, J., Li, C., Lee, C. J., Yannetti, M., Auer, B. M., Clune, T. L., Kouatchou, J., Putman, W. M., Thompson, M. A., Trayanov, A. L., Molod, A. M., Martin, R. V., and Jacob, D. J.: GEOS-Chem High Performance (GCHP v11-02c): a next-generation implementation of the GEOS-Chem chemical transport model for massively parallel applications, Geosci. Model Dev., 11, 2941–2953, https://doi.org/10.5194/gmd-11-2941-2018, 2018. 
