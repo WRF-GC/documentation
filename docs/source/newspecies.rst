@@ -62,7 +62,7 @@ Add the species you added with the GEOS-Chem name in quotes, e.g., ``gi_newname 
 
 .. code-block::
 
-	State_Chm%Species(II, JJ, k, gi_acet) = chem(i, k, j, p_acet) * 1.0e-6_fp
+    State_Chm%Species(II, JJ, k, gi_acet) = chem(i, k, j, p_acet) * 1.0e-6_fp
     State_Chm%Species(II, JJ, k, gi_acta) = chem(i, k, j, p_acta) * 1.0e-6_fp
 
 Add your species similarly.
