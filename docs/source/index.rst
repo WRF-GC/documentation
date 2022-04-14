@@ -19,9 +19,9 @@ The key references for WRF-GC are:
 Most useful pages
 ------------------
 
-* `Frequently Asked Questions`_ about WRF-GC.
-* `Common Errors`_ for when you run into errors. ``Ctrl+F`` (``Command+F``) will be your friend in this comprehensive page.
-* The `Preflight Checklist`_ has a list of all steps you have to go through for a successful WRF-GC run. Make sure you follow all steps.
+* :doc:`/faq` about WRF-GC.
+* :doc:`/common-errors` for when you run into errors. ``Ctrl+F`` (``Command+F``) will be your friend in this comprehensive page.
+* The :doc:`/preflight-checklist` has a list of all steps you have to go through for a successful WRF-GC run. Make sure you follow all steps.
 
 .. toctree::
    :maxdepth: 1
