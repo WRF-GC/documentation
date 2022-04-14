@@ -12,9 +12,14 @@ We outline the relevant steps below, assuming some familiarity with Fortran:
 GEOS-Chem model
 ---------------
 
-**If you are only changing reactions:** Simply edit ``chem/gc/KPP/Standard/standard.eqn`` as you would do within regular GEOS-Chem. You need to rebuild the chemical mechanism code using KPP. After that, simply recompile WRF-GC (``./compile em_real`` at the WRF root directory) and you are good to go.
+Only changing reactions
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Simply edit ``chem/gc/KPP/Standard/standard.eqn`` as you would do within regular GEOS-Chem. You need to rebuild the chemical mechanism code using KPP. After that, simply recompile WRF-GC (``./compile em_real`` at the WRF root directory) and you are good to go.
 
 As a reminder, the GEOS-Chem source code is unmodified and resides in ``WRF/chem/gc``.
+
+WRF-GC does not use ``Tropchem``.
 
 Adding additional code
 ^^^^^^^^^^^^^^^^^^^^^^^
