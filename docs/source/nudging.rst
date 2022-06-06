@@ -35,8 +35,8 @@ Nudging using input FNL data
 
 To change whether winds, temperature, and/or water vapor are nudged you can change ``if_no_pbl_nudging_uv`` (``t`` or ``q``.)
 
-2. **Re-run ``real.exe``.** This will generate ``wrffdda_d<domain>`` files in your run directory.
-3. **Run ``wrf.exe``.**
+2. **Re-run real.exe.** This will generate ``wrffdda_d<domain>`` files in your run directory.
+3. **Run wrf.exe.**
 
 Nudging using surface and upper-air observations
 ------------------------------------------------

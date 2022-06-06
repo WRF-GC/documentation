@@ -24,6 +24,11 @@ Compiling WRF-GC
 * Go into ``WRF/chem`` and run ``make install_registry``. **This is very important. If you did not do this before the following steps, you have to start over from here.**
 * Compile WRF-GC: ``./compile em_real``.
 
+.. note::
+	If you change the code **but not the species list**, then run ``./compile em_real`` to recompile directly.
+
+	If you change the species list, then ``./clean -a`` needs to be issued, then ``./configure -hyb`` from scratch and ``./compile em_real``.
+
 Compiling WPS
 --------------
 
@@ -36,5 +41,5 @@ Running WRF-GC
 * **Update namelist.input to be consistent with namelist.wps**.
 * Link the meterology data to your run directory (``ln -sf ../../WPS/met_em* .``)
 * Run ``real.exe`` using MPI (e.g., ``mpirun -np $SLURM_NTASKS ./real.exe`` - depending on your cluster configuration you may need to batch this).
-* **Create the initial/boundary conditions using ``mozbc`` or another tool.**
+* **Create the initial/boundary conditions using mozbc or another tool.**
 * **Run WRF-GC.** Run ``wrf.exe``.
