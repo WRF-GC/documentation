@@ -195,6 +195,11 @@ Check if your system has enough memory and try to run with ``ulimit -c unlimited
 
 This may also mean there is an error somewhere else upstream.
 
+Exit 152                mpirun -np ./wrf.exe
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Check if your system / cluster job is allowing for enough memory. Also, check errors in other ``rsl.*`` files.
+
 Not actually errors
 --------------------
 
@@ -202,6 +207,11 @@ Cannot find -lGCHPint
 ^^^^^^^^^^^^^^^^^^^^^^
 
 This is not an error, ignore. If you cannot successfully compile WRF-GC, there is an error above in the compile log.
+
+cannot stat ‘geos’: No such file or directory
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Also shows sometimes as ``make[5]: [exe] Error 1 (ignored)``. This is not an error, ignore. If you cannot successfully compile WRF-GC, there is an error above in the compile log.
 
 Trapping levels are weird and they should not be equal
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

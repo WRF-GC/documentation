@@ -31,6 +31,14 @@ Does WRF-GC require ESMF?
 
 No.
 
+Building
+--------
+
+Compiling WRF-GC takes a long time and is stuck on module_first_rk_step_part2.F90
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This step usually takes approximately 40 minutes. Usually there is no cause for alarm unless compiling WRF-GC takes longer than 2-4 hours, depending on your machine.
+
 Input
 -----
 
@@ -99,6 +107,13 @@ Can I run the model in multiple segmented runs?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Yes. WRF will generate restart files based on the namelist configuration's ``restart_interval``.
+
+What do we do about WRF parameterizations (e.g., cumulus) at higher resolution runs?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This is a research question, but the WRF-GC paper `Lin et al., 2020 <https://gmd.copernicus.org/articles/13/3241/2020/gmd-13-3241-2020.html>`_ includes *some* guidance:
+
+	The WRF-GC state conversion module currently supports convective mass flux calculations using the new Tiedtke scheme (Tiedtke, 1989; Zhang et al., 2011; Zhang and Wang, 2017) and the Zhang–McFarlane scheme (Zhang and McFarlane, 1995) (Table 1), because these two cumulus parameterization schemes are more physically compatible with the convective transport algorithm currently in GEOS-Chem. In addition, the users should consider the horizontal resolution of the model when choosing which cumulus parameterization to use. The new Tiedtke scheme and the Zhang–McFarlane schemes are generally recommended for use in simulations at horizontal resolutions larger than 10km (Skamarock et al., 2008; Arakawa and Jung, 2011). At horizontal resolutions between 2 and 10km, the so-called “convective grey zone” (Jeworrek et al., 2019), the use of the Grell–Freitas scheme is recommended for the WRF model (Grell and Freitas, 2014), as it allows subsidence to spread to neighboring columns; this option will be implemented in a future WRF-GC version. At horizontal resolutions finer than 2km, it is assumed that convections are resolved and cumulus parameterizations should not be used (Grell and Freitas, 2014; Jeworrek et al., 2019). The scale dependence of cumulus parameterizations and their impacts on convective mixing of chemical species are an active area of research, which we will explore in the future using WRF-GC.
 
 
 Output

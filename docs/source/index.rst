@@ -46,6 +46,7 @@ Most useful pages
    :hidden:
 
    common-errors.rst
+   nudging.rst
    newspecies.rst
 
 .. toctree::
