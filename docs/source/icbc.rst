@@ -33,15 +33,16 @@ Run the MATLAB script in the GEOS-Chem output file directory. Modify the script 
 
 (b) ``filename_output``: set the output filename freely.
 
-(c) simulation_4_5/simulation_2/25: 
-    If the resolution of global GEOS-Chem simulation is 2×2.5 degree, please set it as follows:
+(c) ``simulation_4_5``/``simulation_2_25``: 
+
+If the resolution of global GEOS-Chem simulation is 2×2.5 degree, please set it as follows:
 
 .. code-block::
 
         simulation_4_5               = false;
         simulation_2_25              = true;
 
-    If the resolution of global GEOS-Chem simulation is 4×5 degree, please set it as follows:
+If the resolution of global GEOS-Chem simulation is 4×5 degree, please set it as follows:
 
 .. code-block::
 
@@ -59,12 +60,14 @@ Run the MATLAB script in the GEOS-Chem output file directory. Modify the script 
         startdate                    = 7; 
         enddate                      = 21;
 
- (e) Set the domain for output file (needs to be larger than your WRF-GC domain)
+(e) Set the domain for output file (needs to be larger than your WRF-GC domain)
 
-     If the resolution of global GEOS-Chem simulation is 2x2.5
-     longitude: 0 (index 1):2.5:357.5 (index 144)
-     latitude : -90 (index 1):2:90 (index 91)
-     Here is an example:
+If the resolution of global GEOS-Chem simulation is 2x2.5:
+
+longitude: 0 (index 1):2.5:357.5 (index 144)
+latitude: -90 (index 1):2:90 (index 91)
+
+Here is an example:
 
 .. code-block::
 
