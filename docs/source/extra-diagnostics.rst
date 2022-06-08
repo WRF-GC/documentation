@@ -19,8 +19,8 @@ The following GEOS-Chem diagnostics are supported in a limited way:
      - GEOS-Chem name
      - WRF-GC name (output)
    * - Cloud convection flux
-   	 - ``CloudConvFlux``
-   	 - ``cldcnvflx_n#``
+     - ``CloudConvFlux``
+     - ``cldcnvflx_n#``
    * - Budget: Emissions and Dry deposition
      - ``BudgetEmisDryDep``
      - ``gcemisdrydep_<area>_n#``
