@@ -9,7 +9,7 @@ By default, WRF-GC outputs **all instantaneous species mixing ratios (ppmv)** at
 Limited support for GEOS-Chem diagnostics
 ------------------------------------------
 
-The following GEOS-Chem diagnostics are supported in a limited way:
+The following GEOS-Chem diagnostics (from `the GEOS-Chem netCDF/History diagnostics list <http://wiki.seas.harvard.edu/geos-chem/index.php/Collections_for_History_diagnostics>`_) are supported in a limited way:
 
 .. list-table:: Limited GEOS-Chem diagnostics supported
    :widths: 50 25 25

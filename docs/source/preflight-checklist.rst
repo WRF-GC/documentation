@@ -1,4 +1,4 @@
-Preflight Checklist
+Pre-flight checklist
 ======================
 
 Here is a list of all the steps that should be performed before running WRF-GC. The specifics are in the getting started guide.
@@ -11,7 +11,7 @@ Downloading WRF-GC and input data
 
 * **Download the WRF model and the WPS pre-processor.**
 * **Download WRF-GC.** Go into the WRF model and delete the ``chem`` folder, then download WRF-GC into ``WRF/chem`` folder.
-* **Download the GEOS-Chem input data.** If you already run GEOS-Chem, remember the GEOS-Chem input data path. Otherwise, download `GEOS-Chem data directories <http://wiki.seas.harvard.edu/geos-chem/index.php/Downloading_GEOS-Chem_data_directories>`__. All ``CHEM_INPUTS`` are required, then choose inventories you need for ``HEMCO``.
+* **Download the GEOS-Chem input data.** If you already run GEOS-Chem, remember the GEOS-Chem input data path. Otherwise, download `GEOS-Chem data directories <http://wiki.seas.harvard.edu/geos-chem/index.php/Downloading_GEOS-Chem_data_directories>`__. All ``CHEM_INPUTS`` are required, then choose inventories you need for :term:`HEMCO`.
 
 Compiling WRF-GC
 ------------------

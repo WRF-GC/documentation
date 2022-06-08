@@ -62,7 +62,7 @@ What are the typical input files for running WRF-GC?
 How do I generate chemical initial/boundary conditions?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-See :doc:`/icbc.rst`.
+See :doc:`/icbc`.
 
 Can I nudge the input meteorology data?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -74,7 +74,7 @@ Can I use other emission inventories?
 
 Yes. You want to edit the HEMCO configuration file (``HEMCO_Config.rc``), like in GEOS-Chem. Generally, all emission inventories supported by GEOS-Chem/HEMCO are supported in WRF-GC, because the species list is the same.
 
-For emission inventories from WRF-Chem (e.g., prepared by `prep_chem_sources`), these inventories need to be ported to HEMCO to function with WRF-GC. We do not support WRF-Chem style emissions (i.e., "auxinput05") within WRF-GC.
+For emission inventories from WRF-Chem (e.g., prepared by ``prep_chem_sources``), these inventories need to be ported to HEMCO to function with WRF-GC. We do not support WRF-Chem style emissions (i.e., "auxinput05") within WRF-GC.
 
 Running and configuration
 -------------------------

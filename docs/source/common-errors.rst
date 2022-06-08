@@ -1,4 +1,4 @@
-Common Errors
+Common errors
 ==============
 
 .. note::
@@ -180,6 +180,8 @@ forrtl: severe (408): fort: (2): Subscript #1 of the array ZPJ has value 1 which
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Same! Check `rsl.error.` files for **another error** - it may be hundreds of lines above (searching for ``GEOS-Chem ERROR:`` or ``REQUIRED FILE NOT FOUND`` helps).
+
+It may be helpful to first check this: :ref:`FAST-JX (RD_XXX): REQUIRED FILE NOT FOUND` to make sure your ``input.geos`` paths are correct.
 
 This error indicates that another error occurred somewhere upstream.
 
