@@ -139,12 +139,25 @@ The output is in ``wrfout_`` netCDF format used by WRF, and WRF-Chem. As such, t
 The outputs are so large! Can I compress them?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You may be able to use netCDF tools to only get the variables you want. At the moment, there is no capability to customize the list of species output by WRF-GC, so they'll all be in one file.
+You may be able to use netCDF tools to only get the variables you want after output. If you want to customize how WRF-GC outputs variables, see :ref:`Can I select what variables WRF-GC outputs?`.
+
+Can I select what variables WRF-GC outputs?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Yes. `WRF documentation has some instructions that make this possible <https://github.com/NCAR/WRFV3/blob/master/README.io_config>`__. A text file (e.g., ``outputlist.txt``) can be added to the run directory containing customized options, e.g.,
+
+.. code-block::
+	-:h:0:sala,salc
+
+This will remove ``sala`` and ``salc`` from the output file (``wrfout_``...), when ``namelist.input``'s ``&time_control`` section has the following:
+
+.. code-block::
+	iofields_filename = 'outputlist.txt',
 
 Can I output GEOS-Chem diagnostics?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Limited support is available for this at this time. Generally, only very specific diagnostics such as wet deposition loss rates are available.
+Limited support is available for this at this time. Generally, only very specific diagnostics such as wet deposition loss rates are available. See :doc:`/extra-diagnostics` for detailed descriptions and guidance on how to manually output anything that is within GEOS-Chem / HEMCO.
 
 Planeflight diagnostics are not available at this time but may be developed in the future.
 
