@@ -147,11 +147,13 @@ Can I select what variables WRF-GC outputs?
 Yes. `WRF documentation has some instructions that make this possible <https://github.com/NCAR/WRFV3/blob/master/README.io_config>`__. A text file (e.g., ``outputlist.txt``) can be added to the run directory containing customized options, e.g.,
 
 .. code-block::
+
 	-:h:0:sala,salc
 
 This will remove ``sala`` and ``salc`` from the output file (``wrfout_``...), when ``namelist.input``'s ``&time_control`` section has the following:
 
 .. code-block::
+
 	iofields_filename = 'outputlist.txt',
 
 Can I output GEOS-Chem diagnostics?
