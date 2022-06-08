@@ -47,6 +47,7 @@ Most useful pages
 
    common-errors.rst
    nudging.rst
+   extra-diagnostics.rst
    newspecies.rst
 
 .. toctree::
