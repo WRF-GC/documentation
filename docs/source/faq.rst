@@ -76,7 +76,7 @@ Yes. You want to edit the HEMCO configuration file (``HEMCO_Config.rc``), like i
 
 For emission inventories from WRF-Chem (e.g., prepared by ``prep_chem_sources``), these inventories need to be ported to HEMCO to function with WRF-GC. We do not support WRF-Chem style emissions (i.e., "auxinput05") within WRF-GC.
 
-Running and configuration
+Running and configuration/
 -------------------------
 
 Can I use WRF-GC to run Hg/CH4/CO2 specialty simulations?
@@ -88,6 +88,13 @@ Can I use WRF-GC with tropchem (troposphere-only chemistry)?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Generally not out of the box. By default, UCX will run above the tropopause, into the stratosphere. Note that WRF model top is generally lower than GEOS-Chem (which goes to 0.1 hPa). It is recommended to leave this at the default configuration - note that recent versions of GEOS-Chem have also retired tropchem.
+
+Can I customize WRF-GC's vertical grid?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Yes. See `WRF User's Guide on vertical grid configuration <https://www2.mmm.ucar.edu/wrf/users/docs/user_guide_V3/user_guide_V3.9/users_guide_chap5.htm#hybrid_vert_coord>`__. Specifically, ``p_top_requested`` in ``namelist.input`` sets the model top target (note that WPS must have the necessary meteorology up to this pressure level), and ``e_vert`` specifies the number of vertical levels requested.
+
+If only ``e_vert`` and ``p_top_requested`` are specified, then ``real.exe`` will generate vertical levels for you and output some information. You may also be able to specify the grid completely manually using ``eta_levels``.
 
 Where are the configuration files for WRF-GC?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
