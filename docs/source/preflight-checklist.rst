@@ -41,5 +41,5 @@ Running WRF-GC
 * **Update namelist.input to be consistent with namelist.wps**.
 * Link the meterology data to your run directory (``ln -sf ../../WPS/met_em* .``)
 * Run ``real.exe`` using MPI (e.g., ``mpirun -np $SLURM_NTASKS ./real.exe`` - depending on your cluster configuration you may need to batch this).
-* **Create the initial/boundary conditions using mozbc or another tool.**
+* **Create the initial/boundary conditions using mozbc or another tool.** Refer to :doc:`/icbc`.
 * **Run WRF-GC.** Run ``wrf.exe``.
