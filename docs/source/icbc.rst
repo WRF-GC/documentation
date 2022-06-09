@@ -81,16 +81,6 @@ Here is an example:
 
 The netCDF file will be generated after running the script.
 
-3. **Run mozbc using the generated file.** We provide mozbc input files ``GEOSCHEM_v12_2_1.inp`` and ``GEOSCHEM_v12_8_1.inp``, which contain the default advected species (``SpeciesConc_?ADV?``) of GEOS-Chem v12.2.1 or GEOS-Chem v12.8.1. If you want to change the species, please modify the ``spc_map`` in the input file, e.g.
-
-.. code-block::
-
-    'isoprene -> ISOP'
-
-where "isoprene" is the name of WRF-GC chemical species and "ISOP" is the name of GEOS-Chem species.
-
-If the chemical IC/BC have been successfully written into the ``wrfinput_d<domain>`` and ``wrfbdy_d<domain>`` files, "bc_wrfchem completed successfully" will appear.
-
 Using MOZART4-GEOS5/WACCM as IC/BC
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -140,3 +130,9 @@ Run ``mozbc``:
 .. code-block::
 
         ./mozbc < input.inp
+
+.. note::
+    If you want to change the species mapping or add new species, please modify the ``spc_map`` in the input file, e.g.: ``'isoprene -> ISOP'`` where "isoprene" is the name of WRF-GC chemical species and "ISOP" is the name of GEOS-Chem species.
+
+
+If the chemical IC/BC have been successfully written into the ``wrfinput_d<domain>`` and ``wrfbdy_d<domain>`` files, "bc_wrfchem completed successfully" will appear.
