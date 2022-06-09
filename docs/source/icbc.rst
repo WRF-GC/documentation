@@ -13,8 +13,11 @@ The general process is as follows:
 * Use `mozbc` to add these inputs to ``wrfinput_d01`` and/or ``wrfbdy_d01`` files.
 * Run the WRF-GC model.
 
+Preparing IC/BC file from sources
+----------------------------------
+
 Using global GEOS-Chem output as IC/BC
----------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Details are available in the PDF getting started guide. `A MATLAB script <https://github.com/fengx7/WRF-GC-GCC_ICBC>`_ will process global GEOS-Chem outputs to netCDF files accepted by ``mozbc``, which are then generated into WRF(-GC) initial/boundary files.
 
@@ -89,6 +92,51 @@ where "isoprene" is the name of WRF-GC chemical species and "ISOP" is the name o
 If the chemical IC/BC have been successfully written into the ``wrfinput_d<domain>`` and ``wrfbdy_d<domain>`` files, "bc_wrfchem completed successfully" will appear.
 
 Using MOZART4-GEOS5/WACCM as IC/BC
------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Refer to the WRF-Chem documentation.
+
+
+Using ``mozbc``
+-----------------
+
+Building mozbc (only need to do once)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. **Download a customized version of mozbc for WRF-GC's hybrid sigma-eta grid.** This is available at `Xu Feng's GitHub, fengx7/mozbc_for_WRFv3.9 <https://github.com/fengx7/mozbc_for_WRFv3.9/>`_
+
+.. code-block::
+
+        git clone https://github.com/fengx7/mozbc_for_WRFv3.9.git mozbc
+
+2. **Go to the mozbc directory downloaded and configure the environment.** Set up the path to your netCDF library
+
+.. code-block::
+
+        export NETCDF_DIR=/path/to/netcdf/here
+
+The content inside ``$NETCDF_DIR`` should have ``include``, ... folders that correspond to netCDF.
+
+3. **Compile mozbc.** Run ``./make_mozbc``.
+
+Configuring mozbc
+^^^^^^^^^^^^^^^^^^
+
+Edit the input configuration file ending in ``.inp``, corresponding to the version of GEOS-Chem you are using.
+
+* GEOS-Chem 12.8.x: `GEOSCHEM_v12_8_1.inp <https://github.com/fengx7/WRF-GC-GCC_ICBC/blob/master/GEOSCHEM_v12_8_1.inp>`_
+* GEOS-Chem 12.2.1: `GEOSCHEM_v12_2_1.inp <https://github.com/fengx7/WRF-GC-GCC_ICBC/blob/master/GEOSCHEM_v12_2_1.inp>`_
+
+Configure the paths to the WRF input in ``dir_wrf`` (``wrfinput_d01``, ``wrfbdy_d01`` ... - **run real.exe to generate these first**) and the source netCDF file for IC/BC (created in step above). **Make sure the paths end in trailing slashes** (``/``)
+
+.. code-block::
+
+        dir_wrf = '/my/path/to/WRF/run/' 
+        dir_moz = '/my/path/to/source/data/for/ic-bc/'
+        fn_moz  = 'wrfgc_icbc_data_test1.nc'
+
+Run ``mozbc``:
+
+.. code-block::
+
+        ./mozbc < input.inp

@@ -47,6 +47,11 @@ If no, go to step 3. **The error is because you (or someone) moved your WRF-GC d
 
 4. Now, go to ``WRF/chem``, run ``make compile_chem``. Verify that ``WRF/chem/main/Makefile`` has ``chem/gc/lib`` pointing to the right path. **Go back to the root WRF directory and compile again**: ``./compile em_real``. No clean is necessary.
 
+mo_mozart_lib.f90:118: undefined reference to `nf_open_'
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This happens in ``mozbc``. Check if you have **netCDF-C** and **netCDF-Fortran** in the same directory. Your ``$NETCDF_DIR`` should include ``include/libnetcdff.a`` - if not, you're missing the netCDF-Fortran.
+
 WPS-related errors
 -------------------
 
