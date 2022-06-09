@@ -1,0 +1,25 @@
+.wy-side-nav-search {
+	background: #931c1c;
+}
+
+.wy-menu-vertical header, .wy-menu-vertical p.caption {
+	color:  #ffd6d6;
+}
+
+.admonition {
+	box-shadow: 1px 1px 8px rgba(0,0,0,0.2);
+}
+
+.admonition-title {
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+.wy-nav-side {
+	background:  #252222;
+	box-shadow:  5px 0 10px rgba(0,0,0,0.2);
+}
+
+.wy-menu-vertical a {
+	transition:  background linear 0.1s;
+}
