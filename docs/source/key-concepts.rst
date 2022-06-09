@@ -6,7 +6,7 @@ Here is a list of concepts for WRF-GC that may be useful for using and developin
 .. glossary::
 
    WRF
-      The `Weather Research and Forecasting Model <https://www.mmm.ucar.edu/weather-research-and-forecasting-model>`_, a mesoscale weather model.
+      The `Weather Research and Forecasting Model <https://www.mmm.ucar.edu/weather-research-and-forecasting-model>`_, a mesoscale weather model. It provides the meteorology and framework for WRF-GC to work.
 
    GEOS-Chem
       Atmospheric chemistry model that WRF-GC uses for chemistry. Not an acronym [#f1]_. `Website <http://geos-chem.org/>`_
@@ -16,6 +16,12 @@ Here is a list of concepts for WRF-GC that may be useful for using and developin
 
    HEMCO
       The Harmonized Emissions Component, an on-line emissions component that WRF-GC uses for emissions. WRF-GC uses a modified version of HEMCO for coupling to WRF-GC and is described by Lin et al., 2021 [#f2]_.
+
+   WPS
+      The WRF Pre-Processor, a tool to prepare the grid and input meteorological fields (initial and boundary conditions) for the WRF model.
+
+   mozbc
+      A tool for inserting chemical initial and boundary conditions into WRF-Chem or WRF-GC's input files. We document the usage in :doc:`/icbc`.
 
 .. rubric:: Footnotes
 
