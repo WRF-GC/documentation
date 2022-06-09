@@ -87,6 +87,7 @@ GEOS-CHEM USES A VERTICAL HYBRID-SIGMA GRID. WRF MUST BE CONFIGURED TO USE THIS 
 If you see this warning in WRF-GC's run logs:
 
 .. code-block::
+
 	 =====================================================
 	 |               W A R N I N G (WRF-GC)              |
 	 =====================================================
@@ -118,6 +119,7 @@ My NOx / HNO3 or nitrogen-related species are extremely high!
 If this is happening near the coast, this is a bug with the ParaNOx extension. Go to ``HEMCO_Config.rc`` and turn off the `ParaNOx` extension:
 
 .. code-block::
+
     102     ParaNOx                : on    NO/NO2/O3/HNO3
 
 Changing ``on`` to ``off``. We are looking for a more permanent fix.
@@ -128,12 +130,14 @@ FAST-JX (RD_XXX): REQUIRED FILE NOT FOUND
 Make sure you have updated ``input.geos``'s configuration with the correct path to the Fast-JX CHEM_INPUTS:
 
 .. code-block::
+
 	%%% PHOTOLYSIS MENU %%% :
 	FAST-JX directory       : /n/holyscratch01/external_repos/GEOS-CHEM/gcgrid/data/ExtData/CHEM_INPUTS/FAST_JX/v2019-10/
 
 Make sure to update the path on top of ``input.geos`` as well:
 
 .. code-block::
+
 	Root data directory     : /n/holyscratch01/external_repos/GEOS-CHEM/gcgrid/data/ExtData/
 
 Data can be obtained from `GEOS-Chem input data <https://sites.wustl.edu/acag/geos-chem/geos-chem-input-data/>`__ at WUSTL.
