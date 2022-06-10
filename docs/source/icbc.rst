@@ -1,4 +1,4 @@
-Generating Initial/Boundary Conditions (IC/BC)
+Chemical Initial/Boundary Conditions (IC/BC)
 ===============================================
 
 WRF-GC is a regional model. Boundary conditions from a global model are generally required. Initial conditions can be provided by a WRF-GC run or other global models.

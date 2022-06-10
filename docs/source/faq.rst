@@ -116,7 +116,7 @@ Can I run the model in multiple segmented runs?
 Yes. WRF will generate restart files based on the namelist configuration's ``restart_interval``.
 
 What do we do about WRF parameterizations (e.g., cumulus) at higher resolution runs?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This is a research question, but the WRF-GC paper `Lin et al., 2020 <https://gmd.copernicus.org/articles/13/3241/2020/gmd-13-3241-2020.html>`_ includes *some* guidance:
 

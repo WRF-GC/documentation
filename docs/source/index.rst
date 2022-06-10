@@ -37,8 +37,14 @@ Most useful pages
    :hidden:
 
    getting-started.rst
-   preflight-checklist.rst
+   guide-1-system-requirements.rst
+   guide-2-downloading.rst
+   guide-3-compiling.rst
+   guide-4-wps-domain-real.rst
    icbc.rst
+   guide-5-run.rst
+   guide-6-outputs.rst
+   preflight-checklist.rst
 
 .. toctree::
    :maxdepth: 2
@@ -49,6 +55,7 @@ Most useful pages
    nudging.rst
    extra-diagnostics.rst
    newspecies.rst
+   lightnox.rst
 
 .. toctree::
    :maxdepth: 1

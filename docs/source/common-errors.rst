@@ -52,6 +52,11 @@ mo_mozart_lib.f90:118: undefined reference to nf_open_
 
 This happens in ``mozbc``. Check if you have **netCDF-C** and **netCDF-Fortran** in the same directory. Your ``$NETCDF_DIR`` should include ``include/libnetcdff.a`` - if not, you're missing the netCDF-Fortran.
 
+lib64: file not recognized: Is a directory; make[1]: [geogrid.exe] Error 1 (ignored)`.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This may happen if you are on a cluster and are compiling :term:`WPS`. Run ``export MPI_LIB=""`` then recompile WPS.
+
 WPS-related errors
 -------------------
 
