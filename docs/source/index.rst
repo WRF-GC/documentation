@@ -23,6 +23,9 @@ Most useful pages
 * :doc:`/common-errors` for when you run into errors. ``Ctrl+F`` (``Command+F``) will be your friend in this comprehensive page.
 * The :doc:`/preflight-checklist` has a list of all steps you have to go through for a successful WRF-GC run. Make sure you follow all steps.
 
+Table of contents
+------------------
+
 .. toctree::
    :maxdepth: 1
    :caption: Introduction
