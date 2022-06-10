@@ -23,3 +23,12 @@
 .wy-menu-vertical a {
 	transition:  background linear 0.1s;
 }
+
+.rst-content .note .admonition-title {
+	background: rgb(106,176,222);
+    background: linear-gradient(180deg, rgba(106,176,222,1) 0%, rgba(52,124,172,1) 100%);
+}
+
+.wy-menu-vertical a:active {
+    background-color: #953535;
+}
