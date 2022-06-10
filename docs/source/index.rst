@@ -26,7 +26,6 @@ Most useful pages
 .. toctree::
    :maxdepth: 1
    :caption: Introduction
-   :hidden:
 
    key-concepts.rst
    faq.rst
@@ -34,7 +33,6 @@ Most useful pages
 .. toctree::
    :maxdepth: 1
    :caption: Getting started
-   :hidden:
 
    getting-started.rst
    guide-1-system-requirements.rst
@@ -49,7 +47,6 @@ Most useful pages
 .. toctree::
    :maxdepth: 2
    :caption: Diving deeper
-   :hidden:
 
    common-errors.rst
    nudging.rst
@@ -60,6 +57,5 @@ Most useful pages
 .. toctree::
    :maxdepth: 1
    :caption: Help & Reference
-   :hidden:
 
    resources.rst
