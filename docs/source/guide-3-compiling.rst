@@ -2,6 +2,7 @@ Compiling WRF-GC
 =================
 
 This section discusses:
+
 * Configuring WRF compile.
 * **Installing the GEOS-Chem species into WRF.**
 * Compiling WRF-GC.
@@ -52,6 +53,21 @@ Go back to the ``WRF`` folder and run:
 	./compile em_real
 
 Wait patiently. The process may take up to 2 - 4 hours depending on your system. If you encounter errors, note them down. A list of common errors is available at :doc:`/common-errors`.
+
+When successful, the output looks like
+
+.. code-block::
+
+	==========================================================================
+	build started:   Sun Apr 15 12:00:00 CST 2018
+	build completed: Sun Apr 15 13:00:00 CST 2018
+	--->                  Executables successfully built                  <---
+	-rwxrwxr-x 1 hplin hplin 63670720 Apr 15 05:34 main/ndown.exe
+	-rwxrwxr-x 1 hplin hplin 63753008 Apr 15 05:35 main/real.exe
+	-rwxrwxr-x 1 hplin hplin 62683008 Apr 15 05:34 main/tc.exe
+	-rwxrwxr-x 1 hplin hplin 71153896 Apr 15 05:34 main/wrf.exe
+	==========================================================================
+
 
 Compiling WPS
 --------------

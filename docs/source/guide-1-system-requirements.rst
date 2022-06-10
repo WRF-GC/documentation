@@ -2,6 +2,7 @@ Preparing your system
 ======================
 
 This section discusses:
+
 * Required system libraries for running WRF-GC.
 * Required common input data for running WRF-GC.
 
@@ -74,6 +75,11 @@ Your system administrator may have installed these packages. For example, on the
 
 Then see the environment configuration above to point WRF-GC to the libraries.
 
+Running on AWS or with Spack
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Some of the package setup from `Haipeng's guide on WRF-GC on AWS <https://jimmielin.me/2019/wrf-gc-aws/>`_ may be helpful.
+
 Running on your own system
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -100,6 +106,9 @@ Then see the environment configuration above to point WRF-GC to the libraries.
 Data requirements
 ------------------
 
+GEOS-Chem shared inputs ("ExtData")
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 .. note::
 	If someone on your cluster / system already runs GEOS-Chem, you may have the data already. If so, you may be able to skip all of the below steps.
 
@@ -111,3 +120,13 @@ Refer to the GEOS-Chem User's Guide:
 WRF-GC needs ``ExtData/HEMCO/`` and ``ExtData/CHEM_INPUTS/``.
 
 If you are running GEOS-Chem as well (e.g., for making WRF-GC boundary / initial conditions), you also need some meteorology fields, etc. Refer to the GEOS-Chem User's Guide.
+
+WRF Pre-Processor Geographical Data
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Download the **required** geographical input data for WRF.
+
+* For WRF version 3, visit `this page <https://www2.mmm.ucar.edu/wrf/users/download/get_sources_wps_geog_V3.html>`_
+* For WRF version 4 and above, visit `this page <https://www2.mmm.ucar.edu/wrf/users/download/get_sources_wps_geog.html#mandatory>`_
+
+For high-resolution simulations, we recommend downloading "Download Highest Resolution of each Mandatory Field". This takes approximately ~50 GB of disk space.

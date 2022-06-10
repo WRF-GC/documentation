@@ -2,6 +2,7 @@ Downloading WRF-GC
 ===================
 
 This section discusses:
+
 * Downloading the :term:`WRF` model.
 * Downloading the WRF-GC coupler and the :term:`GEOS-Chem` model.
 * Downloading the :term:`WPS` (WRF Pre-Processor).
