@@ -34,7 +34,7 @@ Table of contents
    faq.rst
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Getting started
 
    getting-started.rst

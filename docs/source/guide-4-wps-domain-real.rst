@@ -30,7 +30,16 @@ Running UNGRIB and METGRID
 ---------------------------
 
 1. Link GRIB files - ``./link_grib.csh gfs*``
-2. Run ``./ungrib.exe``, then ``./metgrid.exe``.
+2. Run ``./ungrib.exe``, then ``./metgrid.exe``. You should now have meteorology data named ``met_em.d``... in the WPS directory. 
+
+Link the meteorology from WPS to WRF
+-------------------------------------
+
+Go to the **WRF run directory** - ``WRF/run``. Link the meteorological data into the run directory:
+
+.. code-block::
+
+	ln -sf ../../WPS/met_em* .
 
 Configuring WRF-GC - ``namelist.input``
 ----------------------------------------
