@@ -16,6 +16,7 @@ This section discusses:
 	The WRF Pre-Processor can be learned best from the `WRF User's Guide <https://www2.mmm.ucar.edu/wrf/users/docs/user_guide_V3/user_guide_V3.9/users_guide_chap3.html>`_ , as this is not specific to chemistry.
 
 An overview of the workflow of the WRF Pre-Processor system (by Xu Feng):
+
 .. image:: images/WPS_overview.png
    :width: 600
 
@@ -93,16 +94,40 @@ An example is shown below:
 Downloading meteorological data
 --------------------------------
 
+.. warning::
+	Under construction.
+
 Setting up Vtable
 ------------------
 
-Depending on the meteorological data, the appropriate ``Vtable`` needs to be linked...
+Depending on the meteorological data, the appropriate ``Vtable`` needs to be linked so the UNGRIB utility can find it.
+
+If you are using `NCEP FNL <https://rda.ucar.edu/datasets/ds083.2/>`_ or `GFS <https://www.nco.ncep.noaa.gov/pmb/products/gfs/>`_ data, link the ``Vtable.GFS`` into WPS directory:
+
+.. code-block::
+
+	ln -s ungrib/Variable_Tables/Vtable.GFS Vtable
 
 Running UNGRIB and METGRID
 ---------------------------
 
-1. Link GRIB files - ``./link_grib.csh gfs*``
-2. Run ``./ungrib.exe``, then ``./metgrid.exe``. You should now have meteorology data named ``met_em.d``... in the WPS directory. 
+Configure UNGRIB and METGRID in ``namelist.wps``. These should be mostly unchanged:
+
+.. code-block::
+	
+	&ungrib
+		out_format = 'WPS',
+		prefix = 'FILE',
+	/
+
+	&metgrid
+		fg_name = 'FILE',
+		io_form_metgrid = 2,
+	/
+
+Link GRIB files - ``./link_grib.csh gfs*`` (replace ``gfs*`` pointing to the meteorological input files you downloaded in the previous step)
+
+Then run ``./ungrib.exe``, then ``./metgrid.exe``. You should now have meteorology data named ``met_em.d``... in the WPS directory. 
 
 Link the meteorology from WPS to WRF
 -------------------------------------
@@ -115,6 +140,53 @@ Go to the **WRF run directory** - ``WRF/run``. Link the meteorological data into
 
 Configuring WRF-GC - ``namelist.input``
 ----------------------------------------
+
+**Almost all WRF-GC configuration is performed inside namelist.input.** This namelist, located in the WRF run directory, controls most aspects of the simulation.
+
+.. warning::
+	Not all options in WRF for dynamics and physics are supported in WRF-GC! This is because to couple WRF to GEOS-Chem, the internal quantities need to be translated to GEOS-Chem's meteorology format (based on GEOS-FP).
+
+	The list of supported schemes is available in `Lin et al., 2020 <https://gmd.copernicus.org/articles/13/3241/2020/>`_:
+
+	.. image:: images/WRF_supported_options_Lin2020.png
+       :width: 600
+
+We do not discuss WRF configuration options in detail here and invite you to refer to the WRF User's Guide. The basic options to change in ``namelist.input`` are:
+
+&time_control
+^^^^^^^^^^^^^
+
+* Configure the length of your run in ``run_days/hours/minutes/seconds``, ``start_year/month/day/hour/minute/second``, etc.
+* **Configure output frequency.** Use ``history_interval`` (in minutes). e.g., hourly output - ``history_interval = 60``.
+* **Configure frames per output netCDF file.** e.g., ``frames_per_outfile = 2`` with ``history_interval = 60`` means 2 hours will be written per file.
+* **Restarts.** If this is a restart run (running from existing ``wrfrst_d<domain>_<date>`` file), set ``restart = .true.``. By default should be set to ``.false.``.
+* **Write out restart files.** Set ``restart_interval`` (in minutes).
+
+&physics
+^^^^^^^^
+
+* **Microphysics scheme.** (``mp_physics``): We recommend the Morrison Double-Moment scheme (``mp_physics = 10``).
+* **Cumulus parameterization scheme.** (``cu_physics``): We recommend New-Tiedke scheme (``cu_physics = 16``).
+
+&chem
+^^^^^
+
+Configuration of chemistry is within the ``&chem`` section.
+
+**For WRF-GC chemistry,** set ``chem_opt = 233``.
+
+You can control individual processes in GEOS-Chem using:
+
+* Convection: ``gc_do_convection``
+* Emissions: ``gc_do_hemco``
+* Turbulence / Boundary layer mixing: ``gc_do_pblmix``
+* Chemistry: ``gc_do_chemistry``
+* Dry deposition: ``gc_do_drydep``
+* Wet deposition: ``gc_do_wetdep``.
+
+By setting these switches to ``0`` (off) or ``1`` (on).
+
+To configure some simple GEOS-Chem diagnostics, add options to ``&chem`` following the guide in :doc:`/extra-diagnostics`.
 
 Configuring WRF-GC - ``input.geos``
 ------------------------------------
@@ -156,3 +228,5 @@ After configuring, run ``real.exe``. This is a memory and compute intensive oper
 	mpirun -np 32 ./real.exe
 
 Where "32" would be the number of cores. The output can be watched by ``tail -f rsl.out.0000`` and any errors would be in ``rsl.error.0000``.
+
+After running ``real.exe``, the initial condition file ``wrfinput_d<domain>`` and boundary condition file(s) ``wrfbdy_d<domain>`` are generated.
