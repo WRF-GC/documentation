@@ -1,10 +1,6 @@
 Domain, meteorology, and configuration
 ======================================
 
-.. warning::
-	Coming soon - please refer to the PDF User's Guide for this section for now.
-
-
 This section discusses:
 
 * Setting up the domain using WPS's ``geogrid.exe`` tool.
@@ -13,14 +9,14 @@ This section discusses:
 * Using WRF's ``real.exe`` to prepare input before adding in chemical initial/boundary conditions.
 
 .. note::
-	The WRF Pre-Processor can be learned best from the `WRF User's Guide <https://www2.mmm.ucar.edu/wrf/users/docs/user_guide_V3/user_guide_V3.9/users_guide_chap3.html>`_ , as this is not specific to chemistry.
+	The WRF Pre-Processor can be learned best from the `WRF User's Guide <https://www2.mmm.ucar.edu/wrf/users/docs/user_guide_V3/user_guide_V3.9/users_guide_chap3.html>`_, as this is not specific to chemistry.
 
 An overview of the workflow of the WRF Pre-Processor system (by Xu Feng):
 
 .. image:: images/WPS_overview.png
    :width: 600
 
-The data in "A" is described in :ref:`wps-input-data`. The data in "B" is described below in "Downloading meteorological data".
+The data in "A" is described in :ref:`wps-input-data`. The data in "B" is described below in `Downloading meteorological data`_.
 
 Setting up the domain using GEOGRID
 -------------------------------------
@@ -94,8 +90,7 @@ An example is shown below:
 Downloading meteorological data
 --------------------------------
 
-.. warning::
-	Under construction.
+Various types of meteorology can be used to drive WRF. We generally use `NCEP FNL <https://rda.ucar.edu/datasets/ds083.2/>`_ (Reanalysis) or `GFS <https://www.nco.ncep.noaa.gov/pmb/products/gfs/>`_ (Forecasts using GFS), but others may also be available. Refer to the WRF User's Guide.
 
 Setting up Vtable
 ------------------
@@ -149,7 +144,6 @@ Configuring WRF-GC - ``namelist.input``
 	The list of supported schemes is available in `Lin et al., 2020 <https://gmd.copernicus.org/articles/13/3241/2020/>`_:
 
 	.. image:: images/WRF_supported_options_Lin2020.png
-       :width: 600
 
 We do not discuss WRF configuration options in detail here and invite you to refer to the WRF User's Guide. The basic options to change in ``namelist.input`` are:
 

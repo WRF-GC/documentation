@@ -132,3 +132,70 @@ Download the **required** geographical input data for WRF.
 * For WRF version 4 and above, visit `this page <https://www2.mmm.ucar.edu/wrf/users/download/get_sources_wps_geog.html#mandatory>`_
 
 For high-resolution simulations, we recommend downloading "Download Highest Resolution of each Mandatory Field". This takes approximately ~50 GB of disk space.
+
+Environmental configuration file (for reference)
+-------------------------------------------------
+
+Below is an example environment file using the Intel compilers + OpenMPI. The following need to be edited to fit your system:
+
+* ``NETCDF`` needs to point to your netCDF install (inside this path there should be ``bin``, ``lib``, ``include`` for both NetCDF-C and NetCDF-Fortran)
+* ``JASPERLIB`` needs to point to your JasPer install's ``lib`` folder
+* ``JASPERINC`` needs to point to your JasPer install's ``include`` folder
+* ``NETCDF_HOME`` and ``NETCDF_FORTRAN_HOME`` point to NetCDF-C and NetCDF-Fortran. Can be the same as ``$NETCDF``
+
+If you are using the GNU compilers (``gcc`` and ``gfortran``), you also need to edit:
+
+* ``CC=gcc``, ``CXX=gcc``, ``FC=gfortran``, ``ESMF_COMPILER=gfortran``
+
+If you are using other MPI libraries, you also need to edit:
+
+* ``ESMF_COMM`` to ``openmpi``, ``mvapich2``, or ``intelmpi``.
+* If your system has weird, non-standard MPI installations, you may need to manually edit WRF-GC's ``chem/Makefile``.
+
+.. code-block::
+
+	export CC=icc
+	export OMPI_CC=$CC
+
+	export CXX=icpc
+	export OMPI_CXX=$CXX
+
+	export FC=ifort
+	export F77=$FC
+	export F90=$FC
+	export OMPI_FC=$FC
+	export COMPILER=$FC
+	export ESMF_COMPILER=intel
+
+	# MPI Communication
+	export ESMF_COMM=openmpi
+	export MPI_ROOT=$MPI_HOME
+
+	export NETCDF=/n/holyscratch01/jacob_lab/hplin/wrfgc
+	export NETCDF_HOME=$NETCDF
+	export NETCDF_FORTRAN_HOME=$NETCDF
+	export JASPERLIB=$JASPER_HOME/lib64
+	export JASPERINC=$JASPER_HOME/include
+
+	# WRF options
+	export WRF_EM_CORE=1
+	export WRF_NMM_CORE=0
+	export WRF_CHEM=1
+
+	# needed forwrfv4
+	export NETCDF_classic=1
+
+	# GC extras (only for GC not WRF-GC)
+	export OMP_STACKSIZE=1000000000
+	export KMP_STACKSIZE=$OMP_STACKSIZE
+
+	# Base paths
+	export GC_BIN="$NETCDF_HOME/bin"
+	export GC_INCLUDE="$NETCDF_HOME/include"
+	export GC_LIB="$NETCDF_HOME/lib"
+
+	# If using NetCDF after the C/Fortran split (4.3+), then you will need to
+	# specify the following additional environment variables
+	export GC_F_BIN="$NETCDF_FORTRAN_HOME/bin"
+	export GC_F_INCLUDE="$NETCDF_FORTRAN_HOME/include"
+	export GC_F_LIB="$NETCDF_FORTRAN_HOME/lib"

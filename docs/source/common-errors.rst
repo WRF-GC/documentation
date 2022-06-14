@@ -1,9 +1,6 @@
 Common errors
 ==============
 
-.. note::
-	This section is still heavily under construction as we aggregate questions and answers into this document.
-
 We hope you don't run into these errors. But if you do, we hope they will be a useful reference.
 
 **Tip:** Use ``Ctrl+F`` (or ``Command+F``) in your browser to search this page, it'll be much faster!
