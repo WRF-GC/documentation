@@ -15,8 +15,80 @@ This section discusses:
 .. note::
 	The WRF Pre-Processor can be learned best from the `WRF User's Guide <https://www2.mmm.ucar.edu/wrf/users/docs/user_guide_V3/user_guide_V3.9/users_guide_chap3.html>`_ , as this is not specific to chemistry.
 
+An overview of the workflow of the WRF Pre-Processor system (by Xu Feng):
+.. image:: images/WPS_overview.png
+   :width: 600
+
+The data in "A" is described in :ref:`wps-input-data`. The data in "B" is described below in "Downloading meteorological data".
+
 Setting up the domain using GEOGRID
 -------------------------------------
+
+Configuration of the WPS is done in ``namelist.wps`` file under the ``WPS`` directory.
+
+The first step is to describe your simulation domain. Example entries for the ``namelist.wps`` file's ``&share`` and ``&geogrid`` sections are below:
+
+.. code-block::
+
+	&share
+	 wrf_core = 'ARW',
+	 max_dom = 1,
+	 start_date = '2016-06-27_00:00:00',
+	 end_date   = '2016-06-29_00:00:00',
+	 interval_seconds = 21600
+	 io_form_geogrid = 2,
+	 debug_level = 1,
+	/
+
+	&geogrid
+	 parent_id         =   1,
+	 parent_grid_ratio =   1,
+	 i_parent_start    =   1,
+	 j_parent_start    =   1,
+	 e_we = 245,
+	 e_sn = 181,
+
+	 geog_data_res = 'default', 'default',
+	 dx        = 27000,
+	 dy        = 27000,
+	 map_proj  = 'mercator',
+	 ref_lat   = 27,
+	 ref_lon   = 105,
+	 truelat1  = 27.0,
+	 stand_lon = 105,
+	 geog_data_path = '/n/seasasfs02/hplin/geog'
+	/
+
+The configuration options you need to change with a brief description are listed below. This will get you up and running fast, but we recommend checking out the WPS user's guide.
+
+* ``max_dom``: Number of domains. 1 = single domain, up to 8 are supported when working with nested domains. We do not discuss multiple domains here for simplicity.
+* ``start_date`` (per-domain): Start date of simulation
+* ``end_date`` (per-domain): End date of simulation
+* ``e_we`` and ``e_sn``: Dimensions of the grid in x/y dimensions.
+* ``dx`` and ``dy``: Grid distance in the x/y dimensions where the map scale factor is 1. In meters when ``map_proj = 'mercator'``, in degrees when ``map_proj = 'lat-lon'``.
+* ``map_proj``: Map projection. **Only mercator and lat-lon (unrotated regular latitude-longitude) are supported currently in WRF-GC.**
+* ``ref_lat``, ``ref_lon``, ``truelat1``, ``stand_lon`` etc. are grid location parameters (where your regional grid is located in). Refer to the WRF User's Guide.
+* ``geog_data_path``: Path to the static WPS input data you downloaded in the previous steps.
+
+Once ``namelist.wps`` is configured, you can run GEOGRID:
+
+.. code-block::
+
+	./geogrid.exe
+
+This will generate ``geo_em.d01.nc`` (1 domain) and other ``geo_em.d0X.nc`` files for other domains if you are using multiple domains.
+
+Preview the generated grid using the ``ncl`` script (requires NCL installed):
+
+.. code-block::
+
+	ncl util/plotgrids_new.ncl
+
+An example is shown below:
+
+.. image:: images/WPS_domain_example.png
+   :width: 300
+
 
 Downloading meteorological data
 --------------------------------

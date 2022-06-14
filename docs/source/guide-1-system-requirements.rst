@@ -3,8 +3,8 @@ Preparing your system
 
 This section discusses:
 
-* Required system libraries for running WRF-GC.
-* Required common input data for running WRF-GC.
+* Required system **libraries** for running WRF-GC.
+* Required **common input data** for running WRF-GC.
 
 **The steps in this page only need to be run once, and generally do not need to be re-done unless WRF-GC version updates.**
 
@@ -120,6 +120,8 @@ Refer to the GEOS-Chem User's Guide:
 WRF-GC needs ``ExtData/HEMCO/`` and ``ExtData/CHEM_INPUTS/``.
 
 If you are running GEOS-Chem as well (e.g., for making WRF-GC boundary / initial conditions), you also need some meteorology fields, etc. Refer to the GEOS-Chem User's Guide.
+
+.. _wps-input-data:
 
 WRF Pre-Processor Geographical Data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
