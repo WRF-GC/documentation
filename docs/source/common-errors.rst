@@ -110,21 +110,30 @@ Make sure that:
 GEOS-Chem related errors
 ------------------------
 
-## INTEGRATE FAILED TWICE !!! 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+## INTEGRATE FAILED TWICE !!! or error in flexchem_mod_mp_d        1057  flexchem_mod.F90
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you see ``--> Step size too small: T + 10*H = T or H < Roundoff``, this means that the conditions in that grid box are not optimal and resulted in integration errors. Try a better set of initial / boundary conditions.
+If you see ``--> Step size too small: T + 10*H = T or H < Roundoff``, this means that the conditions in that grid box are not optimal and resulted in integration errors. Try a better set of initial / boundary conditions. Also, see :ref:`paranox-bug`.
+
+Negative species concentrations in species O3
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This happens during boundary layer mixing. It is a crash of the ParaNOx extension. See :ref:`paranox-bug`.
+
+.. _paranox-bug:
 
 My NOx / HNO3 or nitrogen-related species are extremely high!
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If this is happening near the coast, this is a bug with the ParaNOx extension. Go to ``HEMCO_Config.rc`` and turn off the `ParaNOx` extension:
+If this is happening near the coast, this is a bug with the ParaNOx extension. This may even cause crashes in the model with negative species concentrations or KPP errors.
+
+A temporary fix is to disable the ship plume extension (ParaNOx). Go to ``HEMCO_Config.rc`` and turn off the `ParaNOx` extension:
 
 .. code-block::
 
     102     ParaNOx                : on    NO/NO2/O3/HNO3
 
-Changing ``on`` to ``off``. We are looking for a more permanent fix.
+Changing ``on`` to ``off``. We are looking for a more permanent fix and are aware that this change may introduce differences in your simulation.
 
 FAST-JX (RD_XXX): REQUIRED FILE NOT FOUND
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -143,7 +152,6 @@ Make sure to update the path on top of ``input.geos`` as well:
 	Root data directory     : /n/holyscratch01/external_repos/GEOS-CHEM/gcgrid/data/ExtData/
 
 Data can be obtained from `GEOS-Chem input data <https://sites.wustl.edu/acag/geos-chem/geos-chem-input-data/>`__ at WUSTL.
-
 
 HEMCO related errors
 --------------------
@@ -206,7 +214,20 @@ forrtl: severe (174): SIGSEGV, segmentation fault occurred
 
 Check if your system has enough memory and try to run with ``ulimit -c unlimited``, ``ulimit -s unlimited``.
 
-This may also mean there is an error somewhere else upstream.
+This may also mean there is an error somewhere else upstream. Look further below for a "stack trace", e.g.,
+
+.. code-block::
+	
+	forrtl: severe (174): SIGSEGV, segmentation fault occurred
+	Image              PC                Routine            Line        Source             
+	wrf.exe            xxxxxxxxxxxxxxxx  Unknown               Unknown  Unknown
+	libpthread-2.17.s  xxxxxxxxxxxxxxxx  Unknown               Unknown  Unknown
+	wrf.exe            xxxxxxxxxxxxxxxx  error_mod_mp_erro         437  error_mod.F90
+	wrf.exe            xxxxxxxxxxxxxxxx  flexchem_mod_mp_d        1057  flexchem_mod.F90
+	wrf.exe            xxxxxxxxxxxxxxxx  chemistry_mod_mp_         299  chemistry_mod.F90
+	wrf.exe            xxxxxxxxxxxxxxxx  gigc_chunk_mod_mp        1277  gigc_chunk_mod.F90
+
+Then look in this page for the error that corresponds to where the model has crashed.
 
 Exit 152                mpirun -np ./wrf.exe
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
