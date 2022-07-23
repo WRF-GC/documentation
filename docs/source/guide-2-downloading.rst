@@ -17,17 +17,17 @@ Choose a folder to store your WRF-GC model, then proceed with the steps below.
 Downloading WRF
 ----------------
 
-Obtain the WRF model from `the wrf-model/WRF GitHub <https://github.com/wrf-model/WRF/releases>`_
+Obtain the WRF model from `the NCAR/WRFV3 GitHub <https://github.com/NCAR/WRFV3/releases>` (version 3.9.1.1 for WRF-GC v1.0 and v2.0) or `the wrf-model/WRF GitHub <https://github.com/wrf-model/WRF/releases>`_ (version 4.0 and above for WRF-GC v3.0)
 
-**The currently supported version is WRF v3.9.1.1.**
+**The currently supported version is WRF v3.9.1.1 (for WRF-GC v1.0 and v2.0).**
 
 .. note::
 	If you would like to use WRF version 4, please contact the WRF-GC team for an experimental version.
 
 .. code-block::
 
-	wget https://github.com/wrf-model/WRF/archive/refs/tags/V3.9.zip
-	unzip V3.9.zip
+	wget https://github.com/NCAR/WRFV3/archive/refs/tags/V3.9.1.1.zip
+	unzip V3.9.1.1.zip
 
 Extract WRF into the ``WRFV3`` folder (version 3) or ``WRF`` folder (version 4). For simplicity, we refer to these folders as ``WRF`` below.
 

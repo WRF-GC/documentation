@@ -183,7 +183,7 @@ Make sure that your ``NETCDF_DIR`` is set to the root directory of your netCDF i
 
 Red herrings
 -------------
-If you see anything on this list, this is not the root cause - **this means that there's an error somewhere else!**
+If you see anything on this list, this is not the root cause - **this means that there's an error somewhere else!** Always check other log files (``rsl.*``) and also further upstream in the error files first.
 
 HEMCO ERROR: MaxNest too low, cannot enter GET_TIMEIDX (hco_read_std_mod.F90)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -233,6 +233,11 @@ Exit 152                mpirun -np ./wrf.exe
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Check if your system / cluster job is allowing for enough memory. Also, check errors in other ``rsl.*`` files.
+
+forrtl: error (78): process killed (SIGTERM)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Check other files first - this CPU is not the root cause of the problem.
 
 Not actually errors
 --------------------
