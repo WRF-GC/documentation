@@ -1,4 +1,4 @@
 WRF-GC documentation
 =======================================
 
-Work-in-progress RTD-based WRF-GC documentation
+ReadTheDocs-based WRF-GC documentation. Read me at https://wrfgc.readthedocs.io

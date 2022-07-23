@@ -4,7 +4,7 @@
 
 project = 'WRF-GC'
 copyright = '2018-2022 The WRF-GC Authors'
-author = 'The WRF-GC Authors'
+author = 'Haipeng Lin, Xu Feng, Tzung-May Fu'
 
 release = '2.0'
 version = '2.0.0'
