@@ -3,7 +3,7 @@ Nudging meteorology
 
 This process is WRF-specific but may be useful for your WRF-GC runs. The namelist options described here are also described in `the WRF User's Guide <https://www2.mmm.ucar.edu/wrf/users/docs/user_guide_V3/user_guide_V3.9/users_guide_chap5.htm#Namelist>`_ 
 
-Grid Nudging using input FNL data
+Grid nudging using input FNL data
 ----------------------------
 
 1. Add the following lines to your ``namelist.input``, into a new section ``&fdda`` as shown below:
@@ -53,7 +53,42 @@ To change whether winds, air temperature, and/or water vapor are nudged you can 
 2. **Re-run real.exe.** This will generate ``wrffdda_d<domain>`` files in your run directory.
 3. **Run wrf.exe.**
 
-Nudging using surface and upper-air observations
+Analysis nudging using surface and upper-air observations
 ------------------------------------------------
 
-Coming soon.
+1. Downloading surface and upper air observation data in rda.ucar.edu (ds461.0 and ds351.0).
+
+(a) `Upper air observational data <https://rda.ucar.edu/datasets/ds351.0/#!description>`_
+(b) `Surface observational data <https://rda.ucar.edu/datasets/ds461.0/#!description>`_
+
+2. Compiling ``obsgrid.exe`` and ``get_rda_data.exe``.
+
+(a) To compile ``obsgrid.exe``, please refer to `OBSGRID Github <https://github.com/wrf-model/OBSGRID>`_. If successful, this will generate the executable ``obsgrid.exe``. 
+
+.. code-block::
+
+   git clone https://github.com/wrf-model/OBSGRID.git OBSGRID
+   ./configure
+   ./compile
+
+
+(b) To compile ``get_rda_data.exe``, please refer to OBSGRID/util/get_rda_data.f.
+
+.. code-block::
+
+   cd OBSGRID/util
+   ifort -FR get_rda_data.f -o get_rda_data.exe
+
+3. Using ``combineSurfaceToObs.sh`` to combine the downloaded files ``SURFACE_OBS:YYYYMMDDHH`` and ``OBS:YYYYMMDDHH`` into new files (e.g. ``C_OBS:YYYYMMDDHH``). This script is available in Github `WRF_Nudging <https://github.com/fengx7/WRF_Nudging>`_.
+
+4. Using ``combineCobsToRdaobs.sh`` to combine those new files (``C_OBS:YYYYMMDDHH``) into ``rda_obs``. This script is available in Github `WRF_Nudging <https://github.com/fengx7/WRF_Nudging>`_.
+
+5. Using ``get_rda_data.exe`` to generate files (``OBS:YYYY-MM-DD-HH``) for obsgrid.exe.
+
+6. Setting up the options in configuration file (``namelist.oa``). Here is an example of `OBSGRID Namelist <https://github.com/fengx7/WRF_Nudging>`_ for running obsgrid.exe.
+
+7. Running ``obsgrid.exe``. This will generate files ``metoa_em*`` and ``wrfsfdda_d01``. Please note that ``obsgrid.exe`` needs to be run after ``metgrid.exe``. The files ``met_em*`` must be available in OBSGRID/ directory. 
+
+.. code-block::
+   
+   ./obsgrid.exe >& obsgrid.out
