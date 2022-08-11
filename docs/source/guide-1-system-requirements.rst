@@ -22,7 +22,7 @@ If you already run GEOS-Chem, you may already have met the compiler and netCDF r
 
 Below are some specific guidance, but if you already know how to set up libraries, point WRF-GC to them in the environment configuration file, editing as necessary.
 
-**See :ref:`Environmental configuration file (for reference)` for all the environmental variables that need to be defined.**
+**For the final environmental configuration file,** see :ref:`Environmental configuration file (for reference)` for all the environmental variables that need to be defined.
 
 
 Running on a cluster
