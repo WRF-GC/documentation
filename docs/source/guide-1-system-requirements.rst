@@ -22,31 +22,8 @@ If you already run GEOS-Chem, you may already have met the compiler and netCDF r
 
 Below are some specific guidance, but if you already know how to set up libraries, point WRF-GC to them in the environment configuration file, editing as necessary.
 
-.. code-block::
+**See :ref:`Environmental configuration file (for reference)` for all the environmental variables that need to be defined.**
 
-	export CC=icc
-	export OMPI_CC=$CC
-
-	export CXX=icpc
-	export OMPI_CXX=$CXX
-
-	export FC=ifort
-	export F77=$FC
-	export F90=$FC
-	export OMPI_FC=$FC
-	export COMPILER=$FC
-	export ESMF_COMPILER=intel
-
-	# MPI Communication
-	export ESMF_COMM=openmpi
-	export MPI_ROOT=$MPI_HOME
-
-	# Location of netCDF - SEE SPECIAL NOTE ABOUT NETCDF BELOW
-	export NETCDF=/n/holyscratch01/jacob_lab/hplin/wrfgc
-
-	# Location of JasPer library
-	export JASPERLIB=$JASPER_HOME/lib64
-	export JASPERINC=$JASPER_HOME/include
 
 Running on a cluster
 ^^^^^^^^^^^^^^^^^^^^^

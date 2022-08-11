@@ -54,6 +54,11 @@ lib64: file not recognized: Is a directory; make[1]: [geogrid.exe] Error 1 (igno
 
 This may happen if you are on a cluster and are compiling :term:`WPS`. Run ``export MPI_LIB=""`` then recompile WPS.
 
+Cannot find input.geos, HEMCO_Config.rc or other configuration files in the run directory after compile
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Make sure that you have compiled with ``export WRF_CHEM=1``, which enables chemistry compilation. If this was not done, you **must** start over going to ``WRF/``, ``./clean -a``, then ``./compile em_real`` again.
+
 WPS-related errors
 -------------------
 

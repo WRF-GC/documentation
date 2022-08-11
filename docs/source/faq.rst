@@ -67,7 +67,7 @@ See :doc:`/icbc`.
 Can I nudge the input meteorology data?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Yes. The process is similar to WRF, or WRF-Chem. More details soon.
+Yes. The process is similar to WRF, or WRF-Chem. Refer to :doc:`/nudging`.
 
 Can I use other emission inventories?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
