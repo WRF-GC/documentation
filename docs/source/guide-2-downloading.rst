@@ -24,12 +24,25 @@ Obtain the WRF model from `the NCAR/WRFV3 GitHub <https://github.com/NCAR/WRFV3/
 .. note::
 	If you would like to use WRF version 4, please contact the WRF-GC team for an experimental version.
 
+For WRF-GC v1.0 and v2.0, use WRF version 3.9.1.1
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 .. code-block::
 
 	wget https://github.com/NCAR/WRFV3/archive/refs/tags/V3.9.1.1.zip
 	unzip V3.9.1.1.zip
 
-Extract WRF into the ``WRFV3`` folder (version 3) or ``WRF`` folder (version 4). For simplicity, we refer to these folders as ``WRF`` below.
+Extract WRF into the ``WRFV3`` folder (version 3). For simplicity, we refer to the folder as ``WRF`` below.
+
+For WRF-GC v3.0, use WRF version 4.3 or 4.4
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block::
+
+	wget https://github.com/wrf-model/WRF/releases/download/v4.4/v4.4.zip
+	unzip v4.4.zip
+
+Extract WRF into the ``WRFV4.X`` folder (version 4), and **rename it** to ``WRF``.
 
 Downloading the WRF-GC coupler and GEOS-Chem model
 ---------------------------------------------------

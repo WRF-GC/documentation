@@ -112,6 +112,18 @@ Make sure that:
 * If you're running WRFV3, make sure WRF-GC was configured with ``./configure -hyb``. If not, you have to recompile. **Backup your namelist and HEMCO configuration**, and ``./clean -a``, ``./configure -hyb``, then ``./compile em_real`` in the WRF directory.
 * You have ``hybrid_opt = 2`` in the ``&dynamics`` section of your ``namelist.input``.
 
+Crash right after W-DAMPING  BEGINS AT W-COURANT NUMBER =    1.000000
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The species numbers in the diagnostics (:doc:`/extra-diagnostics`) are incorrect. Try resetting the diagnostic species numbers in the ``&chem`` section:
+
+.. code-block::
+
+	 gc_diagn_spc_n0                     = 0,
+	 gc_diagn_spc_n1                     = 0,
+	 gc_diagn_spc_n2                     = 0,
+	 gc_diagn_spc_n3                     = 0,
+
 GEOS-Chem related errors
 ------------------------
 
@@ -120,10 +132,10 @@ GEOS-Chem related errors
 
 If you see ``--> Step size too small: T + 10*H = T or H < Roundoff``, this means that the conditions in that grid box are not optimal and resulted in integration errors. Try a better set of initial / boundary conditions. Also, see :ref:`paranox-bug`.
 
-Negative species concentrations in species O3
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+WARNING: Negative concentration for species O3 at (I,J,L) =
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This happens during boundary layer mixing. It is a crash of the ParaNOx extension. See :ref:`paranox-bug`.
+This happens during boundary layer mixing. It is a crash of the ParaNOx extension. If you are sure you have realistic boundary / initial conditions (from GEOS-Chem output) and you are still getting this error, please see :ref:`paranox-bug`.
 
 .. _paranox-bug:
 
@@ -143,6 +155,8 @@ Changing ``on`` to ``off``. We are looking for a more permanent fix and are awar
 FAST-JX (RD_XXX): REQUIRED FILE NOT FOUND
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+**In GEOS-Chem versions 12 or 13:**
+
 Make sure you have updated ``input.geos``'s configuration with the correct path to the Fast-JX CHEM_INPUTS:
 
 .. code-block::
@@ -155,6 +169,20 @@ Make sure to update the path on top of ``input.geos`` as well:
 .. code-block::
 
 	Root data directory     : /n/holyscratch01/external_repos/GEOS-CHEM/gcgrid/data/ExtData/
+
+**In GEOS-Chem version 14 and above:**
+
+Make sure you have updated ``geoschem_config.yml``'s configuration with the correct path to ``CHEM_INPUTS``: there are three locations to update.
+
+.. code-block::
+
+  root_data_dir: /n/holyscratch01/external_repos/GEOS-CHEM/gcgrid/data/ExtData
+  chem_inputs_dir: /n/holyscratch01/external_repos/GEOS-CHEM/gcgrid/data/ExtData/CHEM_INPUTS/
+
+  ...
+
+  photolysis:
+    input_dir: /n/holyscratch01/external_repos/GEOS-CHEM/gcgrid/data/ExtData/CHEM_INPUTS/FAST_JX/v2021-10/
 
 Data can be obtained from `GEOS-Chem input data <https://sites.wustl.edu/acag/geos-chem/geos-chem-input-data/>`__ at WUSTL.
 
@@ -185,6 +213,26 @@ mo_wrfchem_lib.o: ... undefined reference to nf_open_ / nf_inq_varid_ / nf_get_v
 This error when compiling ``mozbc`` is usually because the path to netCDF library, ``NETCDF_DIR``, is incorrect.
 
 Make sure that your ``NETCDF_DIR`` is set to the root directory of your netCDF installation, where under ``$NETCDF_DIR/lib`` you can find the appropriate netCDF library (``libnetcdff.so``).
+
+chk_moz_vars: could not find ..._VMR_inst
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This error is because the input netCDF file (outputs from GEOS-Chem) to create initial/boundary conditions does not have the aforementioned species. This may be because you are using outputs from an older GEOS-Chem version (e.g., 12.8.3) to feed initial/boundary conditions for a newer WRF-GC version (e.g., 14.0.0).
+
+To solve this, simply go to the ``.inp`` file used for ``mozbc`` and remove the relevant line to ignore this species. e.g., for the error "chk_moz_vars: could not find NAP_VMR_inst", the ``NAP`` species can be removed:
+
+.. code-block::
+
+		...
+
+        'n2o5 -> N2O5',
+        'nap -> NAP',
+        'nh3 -> NH3',
+
+        ...
+
+Remove the line corresponding to the problematic species.
+
 
 Red herrings
 -------------
@@ -266,3 +314,8 @@ This doesn't seem to be an issue. If your run was interrupted, there might be an
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This is usually not an issue. If your run stopped, check all the other run files.
+
+tropopause_climate: Warning: Done finding tropopause
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This is not an issue, but may be related to your model vertical level configuration. If your outputs look reasonable, it is safe to ignore.

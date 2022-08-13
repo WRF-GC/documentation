@@ -182,8 +182,10 @@ By setting these switches to ``0`` (off) or ``1`` (on).
 
 To configure some simple GEOS-Chem diagnostics, add options to ``&chem`` following the guide in :doc:`/extra-diagnostics`.
 
-Configuring WRF-GC - ``input.geos``
-------------------------------------
+Configuring WRF-GC - ``input.geos`` (or ``geoschem_config.yml``)
+------------------------------------------------------------------
+
+**GEOS-Chem version 12 and 13:**
 
 **Most** input.geos options known by GEOS-Chem users are not configured in input.geos in WRF-GC, and are instead controlled by ``namelist.input``. Only two exceptions: the path to ``CHEM_INPUTS`` needs to be specified in:
 
@@ -198,7 +200,23 @@ and
 	%%% PHOTOLYSIS MENU %%% :
 	FAST-JX directory       : /n/holyscratch01/external_repos/GEOS-CHEM/gcgrid/data/ExtData/CHEM_INPUTS/FAST_JX/v2021-10/
 
-**Most other options in input.geos for WRF-GC are ignored.**
+**GEOS-Chem version 14 and above:**
+
+**Most** geoschem_config.yml options are controlled by ``namelist.input``, except the file input paths:
+
+.. code-block::
+
+  root_data_dir: /n/holyscratch01/external_repos/GEOS-CHEM/gcgrid/data/ExtData
+  chem_inputs_dir: /n/holyscratch01/external_repos/GEOS-CHEM/gcgrid/data/ExtData/CHEM_INPUTS/
+
+  ...
+
+  photolysis:
+    input_dir: /n/holyscratch01/external_repos/GEOS-CHEM/gcgrid/data/ExtData/CHEM_INPUTS/FAST_JX/v2021-10/
+
+and the Complex SOA option, which can be enabled and the Complex SOA species (TSOAx, ASOAx, ...) need to be added to the advected species list.
+
+**Most other options in input.geos (or geoschem_config.yml) for WRF-GC are ignored.**
 
 Configuring WRF-GC - emissions in ``HEMCO_Config.rc``
 ------------------------------------------------------
