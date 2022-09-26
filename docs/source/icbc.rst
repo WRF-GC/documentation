@@ -13,30 +13,36 @@ The general process is as follows:
 * Use `mozbc` to add these inputs to ``wrfinput_d01`` and/or ``wrfbdy_d01`` files.
 * Run the WRF-GC model.
 
-Preparing IC/BC file from sources
-----------------------------------
-
-Using global GEOS-Chem output as IC/BC
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Preparing IC/BC file from global GEOS-Chem output
+-------------------------------------------------
 
 Details are available in the PDF getting started guide. `A MATLAB script <https://github.com/fengx7/WRF-GC-GCC_ICBC>`_ will process global GEOS-Chem outputs to netCDF files accepted by ``mozbc``, which are then generated into WRF(-GC) initial/boundary files.
 
-1. **Run the GEOS-Chem standard full-chemistry/tropchem simulation at a resolution of 2×2.5/4×5 degree (2×2.5 degree recommended).** The running time must cover the WRF-GC simulation period: e.g. if the simulation period of WRF-GC is from 2015-06-10 00:00:00 to 2015-06-20-00:00:00 (UTC), the time ranges for GEOS-Chem can be from 2015-06-07 00:00:00 to 2015-06-21 00:00:00 (UTC). Output the netCDF diagnostic files every 6 hours (00, 06, 12, 18), including
+Run the GEOS-Chem standard full-chemistry simulation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-(a) ``GEOSChem.SpeciesConc.xxxxxxxxxxxxxx.nc4`` (contains **instantaneous** ``SpeciesConc_?ADV?``)
+We recommend running at a resolution 2 x 2.5 degree because this will provide higher resolution initial and boundary condition data to WRF-GC (which generally has higher resolution). 4 x 5 degree is also supported.
 
-(b) ``GEOSChem.StateMet.xxxxxxxxxxxxxx.nc4`` (contains ``Met_PS1DRY``).
+The running time must cover the WRF-GC simulation period, **with at least one day preceding**: e.g. if the simulation period of WRF-GC is from 2015-06-10 00:00:00 to 2015-06-20 00:00:00 (UTC), the time ranges for GEOS-Chem should be **at least** available from 2015-06-09 00:00:00 to 2015-06-20 00:00:00, not including necessary initialization (spin-up).
 
-2. **Use the MATLAB script** ``convert_gcoutput_mozart_structure_selected_domain.m`` to merge the GEOS-Chem output files and reconstruct the data structure for ``mozbc`` to read.
+   Output the netCDF diagnostic files every 6 hours (00, 06, 12, 18), including:
 
-Run the MATLAB script in the GEOS-Chem output file directory. Modify the script before running as follows:
+    (a) ``GEOSChem.SpeciesConc.xxxxxxxxxxxxxx.nc4`` (contains **instantaneous** ``SpeciesConc_?ADV?``)
 
-(a) ``filename_input``: set the input filename as any one of the GEOS-Chem species concentration output files, e.g.     
+    (b) ``GEOSChem.StateMet.xxxxxxxxxxxxxx.nc4`` (contains ``Met_PS1DRY``).
+
+Converting GEOS-Chem output to mozbc readable format
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Use the MATLAB script ``convert_gcoutput_mozart_structure_selected_domain.m`` (GNU Octave may work as well) to merge the GEOS-Chem output files and reconstruct the data structure for ``mozbc`` to read.
+
+Run the script in the GEOS-Chem output directory (``OutputDir``). Modify the script before running as follows:
+
+(a) ``filename_input``: set the input filename as any one of the GEOS-Chem species concentration output files, e.g.
     ``GEOSChem.SpeciesConc.20150601_0000z.nc4``.
 
 (b) ``filename_output``: set the output filename freely.
 
-(c) ``simulation_4_5``/``simulation_2_25``: 
+(c) ``simulation_4_5``/``simulation_2_25``:
 
 If the resolution of global GEOS-Chem simulation is 2×2.5 degree, please set it as follows:
 
@@ -56,11 +62,11 @@ If the resolution of global GEOS-Chem simulation is 4×5 degree, please set it a
 
 .. code-block::
 
-        startyr                      = 2015;        
+        startyr                      = 2015;
         endyr                        = 2015;
         startmon                     = 6;
         endmon                       = 6;
-        startdate                    = 7; 
+        startdate                    = 7;
         enddate                      = 21;
 
 (e) Set the domain for output file (needs to be larger than your WRF-GC domain)
@@ -81,8 +87,12 @@ Here is an example:
 
 The netCDF file will be generated after running the script.
 
-Using MOZART4-GEOS5/WACCM as IC/BC
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. info::
+
+    If you want to use data from other year / months to run WRF-GC, you can tweak the script to read alternative GEOS-Chem output file names. The time slices in the GEOS-Chem output files is not checked by the script.
+
+Preparing IC/BC file from CAM-chem/WACCM output
+------------------------------------------------
 
 Refer to the WRF-Chem documentation.
 
