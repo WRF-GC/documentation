@@ -114,6 +114,8 @@ Configuring mozbc
 
 Edit the input configuration file ending in ``.inp``, corresponding to the version of GEOS-Chem you are using.
 
+* GEOS-Chem 14.0.0 with Simple SOA: `GEOSCHEM_v14_0_0_SimpleSOA.inp <https://github.com/jimmielin/WRF-GC-GCC_ICBC/blob/master/GEOSCHEM_v14_0_0_SimpleSOA.inp>`_
+* GEOS-Chem 13.4.x: `GEOSCHEM_v13_4_0.inp <https://github.com/jimmielin/WRF-GC-GCC_ICBC/blob/master/GEOSCHEM_v13_4_0.inp>`_
 * GEOS-Chem 12.8.x: `GEOSCHEM_v12_8_1.inp <https://github.com/fengx7/WRF-GC-GCC_ICBC/blob/master/GEOSCHEM_v12_8_1.inp>`_
 * GEOS-Chem 12.2.1: `GEOSCHEM_v12_2_1.inp <https://github.com/fengx7/WRF-GC-GCC_ICBC/blob/master/GEOSCHEM_v12_2_1.inp>`_
 

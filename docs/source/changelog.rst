@@ -4,10 +4,12 @@ Changelog
 2022 Technology Preview - work in progress
 ------------------------------------------
 * *Currently unreleased*. This technology preview is targeting a 3.0 release.
-* Feature: Supports **GEOS-Chem 14.0.0.rc.3** and **HEMCO 3.5.0**.
+* Feature: Supports **GEOS-Chem 14.0.0-rc.3**, **KPP 3.0.0-rc.3**, and **HEMCO 3.5.0**.
 * Feature: Supports **WRF version 4.4**.
 * Feature: Infrastructure for specialty simulations. Now can install couplers for fullchem, ch4, and co2 using the ``install_registry`` command.
-* Feature: Compiles GEOS-Chem 13+ without using CMake by maintenance of the legacy GNU infrastructure.
+* Feature: Compiles GEOS-Chem 13+ without using CMake by maintaining the legacy GNU infrastructure.
+* Feature: Auto-patching of ``wrf_io.F90`` to support more than 3,000 variables in ``wrfbdy``.
+* Feature: No longer inputs initial/boundary conditions for non-advected species through ``i0{12}`` switch in ``registry.chem``.
 * Enhancement: Recompile no longer wipes configuration files by automatically calling ``make install_configs``. Configuration files are installed **once** using ``make install_registry`` or others for specialty simulations.
 * Enhancement: New coupler species generation infrastructure shared with CESM2-GC.
 * Enhancement: Support for ``QV2M`` met field for online blowing snow emissions.
@@ -18,11 +20,11 @@ Changelog
 
 v2.0.1 (September 16, 2021)
 ----------------------------
-* Bugfix: Boundary conditions incorrect dimension.
+* Bugfix: Boundary conditions incorrect dimension. (Regressed bug)
 
 v2.0 (April 7, 2020)
 ---------------------
-* **Feng et al., 2021 GMD release.** Formerly *2020 Technology Preview*.
+* **Feng et al., 2021 GMD release.**
 * Feature: Support **GEOS-Chem 12.7.2, 12.6.3**.
 * Feature: Nested domain functionality.
 * Feature: Aerosol-radiation interactions and aerosol-cloud interactions.
@@ -31,16 +33,35 @@ v2.0 (April 7, 2020)
 * Bugfix: MPI issue for HEMCO masks.
 * Bugfix: Regridding bug causing striped artifacts in MPI CPU boundaries.
 
-v1.1-twoway (December 28, 2019)
---------------------------------
-* Feature: Aerosol-radiation interactions and aerosol-cloud interactions.
+2020 Technology Preview (December 28, 2019)
+--------------------------------------------
+* Feature: Experimental nested domain functionality.
+* Feature: Initial version of aerosol-radiation interactions and aerosol-cloud interactions.
+
+v0.92 (January 2, 2021)
+-----------------------
+* Bugfix: Backported fix for HEMCO 3.0 (Lin et al., 2021 GMD) supporting vertical regridding of emissions data.
+
+v0.91 (July 6, 2020)
+--------------------
+* Bugfix: Boundary conditions incorrect dimension.
+
+v0.9-hotfix (August 6, 2019)
+-----------------------------
+* Bugfix: Support Intel 2017 compilers.
 
 v1.0 (June 19, 2019)
 --------------------
-* **First stable release, Lin et al., 2020 GMD.**
+* **Lin et al., 2020 GMD release. (First stable release)** Released August 2, 2019 as **v0.9**.
 * Feature: Support **GEOS-Chem 12.2.1**.
+* Enhancement: Support OpenMPI.
+* Enhancement: Experimental support for GNU compilers.
 * Bugfix: PEDGE incorrect values, surface pressure too low.
 * Bugfix: Boundary conditions input.
+
+v0.11 (May 7, 2019)
+-------------------
+* Bugfix: AREA_M2 heap overflow.
 
 v0.1 (Beta 1) (December 8, 2018)
 --------------------------------

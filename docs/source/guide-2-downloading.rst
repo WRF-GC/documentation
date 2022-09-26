@@ -12,6 +12,9 @@ This section discusses:
 
 	However, the GEOS-Chem model version within the WRF-GC coupler, located within the ``gc`` folder, **is unmodified.** You can change this copy of GEOS-Chem just as you would change any other copy of GEOS-Chem, for your research.
 
+.. warning::
+	**Do not move** the WRF-GC directory after compiling, even on the same machine. Do not share a compiled copy of WRF-GC with others because during the compile process, the file paths are fixed. **Always install a fresh copy of WRF and download the WRF-GC into the chem directory when you move folders!**
+
 Choose a folder to store your WRF-GC model, then proceed with the steps below.
 
 Downloading WRF
@@ -55,7 +58,15 @@ Downloading the WRF-GC coupler and GEOS-Chem model
 
 	git clone https://github.com/jimmielin/wrf-gc-release.git chem
 
-**Make sure you have cloned this into the chem folder.**
+**Make sure you have cloned this into the chem folder.** The folder should look like this:
+
+.. code-block::
+
+	WRF/chem$ ls
+	gc                config
+	chem_driver.F     module_chem_utilities.F    module_input_chem_data.F
+	chemics_init.F    module_convection_prep.F   module_data_rrtmgaeropt.F
+	wrfgc_convert_state_mod.F ...
 
 Downloading the WPS Pre-Processor
 ---------------------------------
