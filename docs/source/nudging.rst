@@ -4,7 +4,7 @@ Nudging meteorology
 This process is WRF-specific but may be useful for your WRF-GC runs. The namelist options described here are also described in `the WRF User's Guide <https://www2.mmm.ucar.edu/wrf/users/docs/user_guide_V3/user_guide_V3.9/users_guide_chap5.htm#Namelist>`_ 
 
 Grid nudging using input FNL data
-----------------------------
+----------------------------------
 
 1. Add the following lines to your ``namelist.input``, into a new section ``&fdda`` as shown below:
 
@@ -54,7 +54,7 @@ To change whether winds, air temperature, and/or water vapor are nudged you can 
 3. **Run wrf.exe.**
 
 Analysis nudging using surface and upper-air observations
-------------------------------------------------
+----------------------------------------------------------
 
 1. Downloading surface and upper air observation data in rda.ucar.edu (ds461.0 and ds351.0).
 

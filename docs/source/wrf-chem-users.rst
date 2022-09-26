@@ -35,10 +35,18 @@ Does GEOS-Chem output separately?
 
 **No**, species are written to the ``wrfout_d0...`` files like WRF-Chem. Species names are different, and generally are the same as GEOS-Chem.
 
+Can I use offline emissions like WRF-Chem?
+-------------------------------------------
+
+**No**, only HEMCO can be used when GEOS-Chem chemistry is used.
+
+Can I run WRF-GC and WRF-Chem in the same WRF install?
+-----------------------------------------------------
+
+**No**, they must be installed separately. WRF-GC removes all the existing chemistry in WRF-Chem.
+
 I'm sold! How do I get started quickly, as a WRF-Chem user?
 -------------------------------------------------------------
-
-The quick breakdown:
 
 * You need some GEOS-Chem input files, see :doc:`/guide-1-system-requirements`. The libraries required for WRF-GC are completely covered by WRF-Chem, so you can reuse the computational environment.
 * You need to replace the ``chem`` folder with WRF-GC, see :doc:`/guide-2-downloading`. Then ``./configure -hyb`` (WRFv3) or ``./configure`` (WRFv4), **then you must go to** ``chem`` and run ``make install_registry``, *then* go back and ``./compile em_real``.

@@ -31,6 +31,7 @@ The key references for WRF-GC are:
    key-concepts.rst
    faq.rst
    wrf-chem-users.rst
+   changelog.rst
 
 .. toctree::
    :maxdepth: 2
