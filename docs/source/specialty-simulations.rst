@@ -79,11 +79,36 @@ Making outputs smaller
 By default, WRF-GC outputs all the species for the full chemistry simulation even in CO2 and CH4 simulations. This can be annoying. Create a file ``outputlist.txt`` in the ``run`` directory with:
 
 .. code-block::
+
 	-:h:0:a3o2,acet,acta,ald2,alk4,aromp4,aromp5,aromro2,ato2,atooh,b3o2,bald,benz,benzo,benzo2,benzp,bro2,bzco3,bzco3h,bzpan,br,br2,brcl,brno2,brno3,bro,c2h2,c2h4,c2h6,c3h8,c4hvp1,c4hvp2,ccl4,cfc11,cfc113,cfc114,cfc115,cfc12,ch2br2,ch2cl2,ch2i2,ch2ibr,ch2icl,ch2o,ch2oo,ch3br,ch3ccl3,ch3choo,ch3cl,ch3i,chbr3,chcl3,clock,co,csl,cl,cl2,cl2o2,clno2,clno3,clo,cloo,eoh,ethln,ethn,ethp,etno3,eto,eto2,etoo,etp,glyc,glyx,h,h1211,h1301,h2,h2402,h2o,h2o2,hac,hbr,hc5a,hcfc123,hcfc141b,hcfc142b,hcfc22,hcooh,hcl,hi,hmhp,hmml,hms,hno2,hno3,hno4,ho2,hobr,hocl,hoi,honit,hpald1,hpald1oo,hpald2,hpald2oo,hpald3,hpald4,hpethnl,i,i2,i2o2,i2o3,i2o4,ibr,iche,ichoo,icn,icnoo,icpdh,icl,idc,idchp,idhdp,idhnboo,idhndoo1,idhndoo2,idhpe,idn,idnoo,iepoxa,iepoxaoo,iepoxb,iepoxboo,iepoxd,ihn1,ihn2,ihn3,ihn4,ihoo1,ihoo4,ihpnboo,ihpndoo,ihpoo1,ihpoo2,ihpoo3,ina,ino,ino2b,ino2d,inpb,inpd,io,iono,iono2,iprno3,isop,isopnoo1,isopnoo2,itcn,ithn,ko2,lbro2h,lbro2n,lch4,lco,limo,limo2,lisopno3,lisopoh,lnro2h,lnro2n,lox,ltro2h,ltro2n,lvoc,lvocoa,lxro2h,lxro2n,macr,macr1oo,macr1ooh,macrno2,map,mco3,mcrdh,mcrenol,mcrhn,mcrhnb,mcrhp,mcrohoo,mct,mek,meno3,mgly,mo2,moh,monits,monitu,mp,mpan,mpn,mtpa,mtpo,mvk,mvkdh,mvkhc,mvkhcb,mvkhp,mvkn,mvkohoo,mvkpc,n,n2,n2o,n2o5,nap,nh3,no,no2,no3,nphen,nprno3,nro2,o,o1d,o2,o3,ocs,oclo,oh,oio,olnd,olnn,othro2,pan,pco,ph2o2,phen,pio2,pip,po2,pox,pp,ppn,prn1,propnn,prpe,prpn,pso4,pyac,r4n1,r4n2,r4o2,r4p,ra3p,rb3p,rcho,rco3,rcooh,ripa,ripb,ripc,ripd,roh,rp,salacl,salccl,so2,tolu,tro2,xro2,xyle,aeri,aonita,asoa1,asoa2,asoa3,asoan,asog1,asog2,asog3,bcpi,bcpo,brsala,brsalc,dms,dst1,dst2,dst3,dst4,indiol,ionita,isala,isalc,monita,msa,nh4,nit,nits,ocpi,ocpo,sala,salaal,salc,salcal,so4,so4s,soagx,soaie,soap,soas,tsoa0,tsoa1,tsoa2,tsoa3,tsog0,tsog1,tsog2,tsog3,pfe,diag_so4_a1,diag_so4_a2,diag_so4_a3,diag_so4_a4,diag_nit_a1,diag_nit_a2,diag_nit_a3,diag_nit_a4,diag_nh4_a1,diag_nh4_a2,diag_nh4_a3,diag_nh4_a4,diag_ocpi_a1,diag_ocpi_a2,diag_ocpi_a3,diag_ocpi_a4,diag_ocpo_a1,diag_ocpo_a2,diag_ocpo_a3,diag_ocpo_a4,diag_bcpi_a1,diag_bcpi_a2,diag_bcpi_a3,diag_bcpi_a4,diag_bcpo_a1,diag_bcpo_a2,diag_bcpo_a3,diag_bcpo_a4,diag_seas_a1,diag_seas_a2,diag_seas_a3,diag_seas_a4,diag_dst_a1,diag_dst_a2,diag_dst_a3,diag_dst_a4,diag_soas_a1,diag_soas_a2,diag_soas_a3,diag_soas_a4,diag_so4_cw1,diag_so4_cw2,diag_so4_cw3,diag_so4_cw4,diag_nit_cw1,diag_nit_cw2,diag_nit_cw3,diag_nit_cw4,diag_nh4_cw1,diag_nh4_cw2,diag_nh4_cw3,diag_nh4_cw4,diag_ocpi_cw1,diag_ocpi_cw2,diag_ocpi_cw3,diag_ocpi_cw4,diag_ocpo_cw1,diag_ocpo_cw2,diag_ocpo_cw3,diag_ocpo_cw4,diag_bcpi_cw1,diag_bcpi_cw2,diag_bcpi_cw3,diag_bcpi_cw4,diag_bcpo_cw1,diag_bcpo_cw2,diag_bcpo_cw3,diag_bcpo_cw4,diag_seas_cw1,diag_seas_cw2,diag_seas_cw3,diag_seas_cw4,diag_dst_cw1,diag_dst_cw2,diag_dst_cw3,diag_dst_cw4,diag_soas_cw1,diag_soas_cw2,diag_soas_cw3,diag_soas_cw4,diag_water_a1,diag_water_a2,diag_water_a3,diag_water_a4,diag_num_a1,diag_num_a2,diag_num_a3,diag_num_a4,diag_num_cw1,diag_num_cw2,diag_num_cw3,diag_num_cw4
 
 Go to ``namelist.input`` and in ``&time_control`` section, add:
 
 .. code-block::
+
 	iofields_filename = 'outputlist.txt',
 
 This will exclude all the full-chemistry species from the specialty WRF-GC simuulation output.
+
+CH4 and CO2 diagnostics
+------------------------
+
+Diagnostics from the ``CH4`` and ``CO2`` collections for GEOS-Chem are available, apart from the species concentrations (in the ``ch4`` and ``co2`` variables, respectively).
+
+CH4 simulation
+^^^^^^^^^^^^^^^
+
+* ``CH4Emission``, CH4 emissions in column, in kg/s, stored in level 1 of ``diagikj9``.
+* ``LossCH4byClInTrop``, Loss CH4 by reaction with Cl, in kg/s, 3-D, in ``diagikj7``.
+* ``LossCH4byOHInTrop``, Loss CH4 by reaction with OH, in kg/s, 3-D, in ``diagikj8``.
+* ``AirMassColumnFull``, Air Mass in column, in kg, 2-D, in ``diagij0``.
+* ``CH4massColumnFull``, CH4 mass in column, full column, in kg, 2-D, in ``diagij1``.
+* ``CH4massColumnTrop``, CH4 mass in column, troposphere only, in kg, 2-D, in ``diagij2``.
+* ``LossOHbyCH4columnTrop``, OH loss by CH4 + OH loss in troposphere, in molec/s, 2-D, in ``diagij3``.
+* ``LossOHbyMCFcolumnTrop``, OH loss by MCF + OH loss in troposphere, in molec/s, 2-D, in ``diagij4``.
+* ``OHwgtByAirMassColumnFull``, mass-weighted mean OH, in kg air * kg OH m-3, 2-D, in ``diagij5``.
+
+CO2 simulation
+^^^^^^^^^^^^^^
+
+* ``ProdCO2fromCO``, production of CO2 from CO oxidation, in kg/m2/s, 3-D, in ``diagikj9``.
