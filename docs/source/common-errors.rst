@@ -6,10 +6,10 @@ We hope you don't run into these errors. But if you do, we hope they will be a u
 **Tip:** Use ``Ctrl+F`` (or ``Command+F``) in your browser to search this page, it'll be much faster!
 
 .. note::
-	WRF-GC has several output files. Most GEOS-Chem output is in the root CPU output file, ``rsl.out.0000``. **Look in this file for any GEOS-Chem related errors.** HEMCO-related errors are in ``HEMCO.log``. WRF-related errors can be in any of the files numbered ``rsl.error.*`` and ``rsl.out.*``. You may want to use ``tail -n 5 rsl.* | less`` to quickly look at all log files to identify errors.
+  WRF-GC has several output files. Most GEOS-Chem output is in the root CPU output file, ``rsl.out.0000``. **Look in this file for any GEOS-Chem related errors.** HEMCO-related errors are in ``HEMCO.log``. WRF-related errors can be in any of the files numbered ``rsl.error.*`` and ``rsl.out.*``. You may want to use ``tail -n 5 rsl.* | less`` to quickly look at all log files to identify errors.
 
 .. warning::
-	THe HEMCO error log, ``HEMCO.log``, only writes errors/warnings from the root process. In order to see HEMCO errors for all processes, edit ``HEMCO_Config.rc`` and set ``LogFile`` to ``*``. Then you will be able to see HEMCO logs for all processes in the ``rsl.out.*`` files.
+  THe HEMCO error log, ``HEMCO.log``, only writes errors/warnings from the root process. In order to see HEMCO errors for all processes, edit ``HEMCO_Config.rc`` and set ``LogFile`` to ``*``. Then you will be able to see HEMCO logs for all processes in the ``rsl.out.*`` files.
 
 Compiling errors
 -----------------
@@ -28,9 +28,9 @@ A few things to check:
 
 .. code-block::
 
-	WRF/chem/gc/lib$ ls
-	libGeosCore.a  libGIGC.a  libHCOI.a  libHeaders.a  libIsorropia.a  libNcUtils.a
-	libGeosUtil.a  libHCO.a   libHCOX.a  libHistory.a  libKpp.a        libObsPack.a
+  WRF/chem/gc/lib$ ls
+  libGeosCore.a  libGIGC.a  libHCOI.a  libHeaders.a  libIsorropia.a  libNcUtils.a
+  libGeosUtil.a  libHCO.a   libHCOX.a  libHistory.a  libKpp.a        libObsPack.a
 
 If yes, proceed to 2. If no, GEOS-Chem was not compiled correctly. Go to ``WRF/chem``, run ``make compile_chem``, then check if there are any errors.
 
@@ -77,10 +77,10 @@ If you see an error similar to:
 
 .. code-block::
 
-	d01 2016-05-11_12:00:00  input_wrf.F: SIZE MISMATCH:  namelist   ide,jde,num_metgrid_levels=         245         181          27
-	d01 2016-05-11_12:00:00  input_wrf.F: SIZE MISMATCH:  input file ide,jde,kde               =         245         181          32
-	d01 2016-05-11_12:00:00 ---- ERROR: Mismatch between namelist and input file dimensions
-	NOTE:       1 namelist vs input data inconsistencies found.
+  d01 2016-05-11_12:00:00  input_wrf.F: SIZE MISMATCH:  namelist   ide,jde,num_metgrid_levels=         245         181          27
+  d01 2016-05-11_12:00:00  input_wrf.F: SIZE MISMATCH:  input file ide,jde,kde               =         245         181          32
+  d01 2016-05-11_12:00:00 ---- ERROR: Mismatch between namelist and input file dimensions
+  NOTE:       1 namelist vs input data inconsistencies found.
 
 You've hit a problem where your meteorology data source (e.g., GFS) has updated **during your model run times!** This doesn't happen often but you are bound to run into it sometime - see the list of updates and their dates `on this changelog page <https://www.nco.ncep.noaa.gov/pmb/changes/>`_ from NOAA.
 
@@ -95,18 +95,18 @@ If you see this warning in WRF-GC's run logs:
 
 .. code-block::
 
-	 =====================================================
-	 |               W A R N I N G (WRF-GC)              |
-	 =====================================================
-	   GEOS-CHEM USES A VERTICAL HYBRID-SIGMA GRID.
-	   WRF MUST BE CONFIGURED TO USE THIS GRID using the
-	   namelist option &dynamics: hybrid_opt = 2, and
-	   RECOMPILING with ./configure -hyb.
+   =====================================================
+   |               W A R N I N G (WRF-GC)              |
+   =====================================================
+     GEOS-CHEM USES A VERTICAL HYBRID-SIGMA GRID.
+     WRF MUST BE CONFIGURED TO USE THIS GRID using the
+     namelist option &dynamics: hybrid_opt = 2, and
+     RECOMPILING with ./configure -hyb.
 
-	   WE WERE *NOT* ABLE TO DETECT THIS IN YOUR WRF-GC
-	   CONFIGURATION, WHICH MEANS THE VERTICAL LEVELS MAY
-	   BE INACCURATE AND OUTRIGHT WRONG. PLEASE CHECK.
-	 =====================================================
+     WE WERE *NOT* ABLE TO DETECT THIS IN YOUR WRF-GC
+     CONFIGURATION, WHICH MEANS THE VERTICAL LEVELS MAY
+     BE INACCURATE AND OUTRIGHT WRONG. PLEASE CHECK.
+   =====================================================
 
 Make sure that:
 * If you're running WRFV3, make sure WRF-GC was configured with ``./configure -hyb``. If not, you have to recompile. **Backup your namelist and HEMCO configuration**, and ``./clean -a``, ``./configure -hyb``, then ``./compile em_real`` in the WRF directory.
@@ -119,10 +119,10 @@ The species numbers in the diagnostics (:doc:`/extra-diagnostics`) are incorrect
 
 .. code-block::
 
-	 gc_diagn_spc_n0                     = 0,
-	 gc_diagn_spc_n1                     = 0,
-	 gc_diagn_spc_n2                     = 0,
-	 gc_diagn_spc_n3                     = 0,
+   gc_diagn_spc_n0                     = 0,
+   gc_diagn_spc_n1                     = 0,
+   gc_diagn_spc_n2                     = 0,
+   gc_diagn_spc_n3                     = 0,
 
 GEOS-Chem related errors
 ------------------------
@@ -161,14 +161,14 @@ Make sure you have updated ``input.geos``'s configuration with the correct path 
 
 .. code-block::
 
-	%%% PHOTOLYSIS MENU %%% :
-	FAST-JX directory       : /n/holyscratch01/external_repos/GEOS-CHEM/gcgrid/data/ExtData/CHEM_INPUTS/FAST_JX/v2019-10/
+  %%% PHOTOLYSIS MENU %%% :
+  FAST-JX directory       : /n/holyscratch01/external_repos/GEOS-CHEM/gcgrid/data/ExtData/CHEM_INPUTS/FAST_JX/v2019-10/
 
 Make sure to update the path on top of ``input.geos`` as well:
 
 .. code-block::
 
-	Root data directory     : /n/holyscratch01/external_repos/GEOS-CHEM/gcgrid/data/ExtData/
+  Root data directory     : /n/holyscratch01/external_repos/GEOS-CHEM/gcgrid/data/ExtData/
 
 **In GEOS-Chem version 14 and above:**
 
@@ -199,10 +199,40 @@ Check the file that it is pointing to. There are a few likely reasons:
 
 If (and only if) you have daily updating emissions data stored in monthly files and you are getting this error at the last day of the month, you are being affected `by this bug <https://github.com/geoschem/HEMCO/issues/141>`_. There is a temporary fix for WRF-GC available, contact Haipeng Lin for details.
 
+.. _hco-run-error:
+
 GEOS-Chem ERROR: Error encountered in "HCO_Run"! -> at HCOI_GC_Run (in module GeosCore/hcoi_gc_main_mod.F90)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This is a HEMCO error. Check ``HEMCO.log``. If nothing is there, change ``LogFile`` to ``*`` in ``HEMCO_Config.rc``, and check **all** ``rsl.out.*`` files after re-running the model.
+
+You are generally looking for something that looks like this:
+
+.. code-block::
+
+    HEMCO ERROR: Cannot find file for current simulation time:
+    /ExtData/HEMCO/OFFLINE_BIOVOC/v2019-10/0.5x0.625/2015/08/biovoc_05.20150820.nc
+      - Cannot get field BIOGENIC_ACET. Please check file name and time (incl. time
+     range flag) in the config. file
+
+    HEMCO ERROR: Error encountered in routine HCOIO_Read!
+
+    HEMCO ERROR: Error in HCOIO_DATAREAD called from HEMCO ReadList_Fill: BIOGENIC
+     _ACET
+     --> LOCATION: ReadList_Fill (HCO_ReadList_Mod.F90)
+
+    HEMCO ERROR: Error in ReadList_Fill (4) called from HEMCO ReadList_Read
+     --> LOCATION: ReadList_Read (HCO_ReadList_Mod.F90)
+     Error in ReadList_Read called from hco_run
+    ===============================================================================
+    GEOS-Chem ERROR: Error encountered in "HCO_Run"!
+     -> at HCOI_GC_Run (in module GeosCore/hco_interface_gc_mod.F90)
+
+    THIS ERROR ORIGINATED IN HEMCO!  Please check the HEMCO log file for
+    additional error messages!
+    ===============================================================================
+
+**This may be much, much further up than the error about the subscripts and may even be in a different file.** Always look through all the log files.
 
 mozbc related errors
 ---------------------
@@ -223,7 +253,7 @@ To solve this, simply go to the ``.inp`` file used for ``mozbc`` and remove the 
 
 .. code-block::
 
-		...
+    ...
 
         'n2o5 -> N2O5',
         'nap -> NAP',
@@ -241,12 +271,12 @@ If you see anything on this list, this is not the root cause - **this means that
 HEMCO ERROR: MaxNest too low, cannot enter GET_TIMEIDX (hco_read_std_mod.F90)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Any kind of error that says ``HEMCO ERROR: MaxNest too low`` means that there is an error somewhere above, in ``HEMCO.log``. Check further!
+Any kind of error that says ``HEMCO ERROR: MaxNest too low`` means that there is an error somewhere above, in ``HEMCO.log``. Check further! See :ref:`hco-run-error`.
 
 forrtl: severe (408): fort: (2): Subscript #1 of the array LOC has value 11 which is greater than the upper bound of 10
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This means that there is an error in ``HEMCO.log`` - check the HEMCO log instead! Maybe inventories are missing, etc.
+This means that there is an error in ``HEMCO.log`` - check the HEMCO log instead! Maybe inventories are missing, etc. Also, see :ref:`hco-run-error`.
 
 forrtl: severe (408): fort: (2): Subscript #1 of the array ZPJ has value 1 which is greater than the upper bound of -1
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -270,15 +300,15 @@ Check if your system has enough memory and try to run with ``ulimit -c unlimited
 This may also mean there is an error somewhere else upstream. Look further below for a "stack trace", e.g.,
 
 .. code-block::
-	
-	forrtl: severe (174): SIGSEGV, segmentation fault occurred
-	Image              PC                Routine            Line        Source             
-	wrf.exe            xxxxxxxxxxxxxxxx  Unknown               Unknown  Unknown
-	libpthread-2.17.s  xxxxxxxxxxxxxxxx  Unknown               Unknown  Unknown
-	wrf.exe            xxxxxxxxxxxxxxxx  error_mod_mp_erro         437  error_mod.F90
-	wrf.exe            xxxxxxxxxxxxxxxx  flexchem_mod_mp_d        1057  flexchem_mod.F90
-	wrf.exe            xxxxxxxxxxxxxxxx  chemistry_mod_mp_         299  chemistry_mod.F90
-	wrf.exe            xxxxxxxxxxxxxxxx  gigc_chunk_mod_mp        1277  gigc_chunk_mod.F90
+
+  forrtl: severe (174): SIGSEGV, segmentation fault occurred
+  Image              PC                Routine            Line        Source
+  wrf.exe            xxxxxxxxxxxxxxxx  Unknown               Unknown  Unknown
+  libpthread-2.17.s  xxxxxxxxxxxxxxxx  Unknown               Unknown  Unknown
+  wrf.exe            xxxxxxxxxxxxxxxx  error_mod_mp_erro         437  error_mod.F90
+  wrf.exe            xxxxxxxxxxxxxxxx  flexchem_mod_mp_d        1057  flexchem_mod.F90
+  wrf.exe            xxxxxxxxxxxxxxxx  chemistry_mod_mp_         299  chemistry_mod.F90
+  wrf.exe            xxxxxxxxxxxxxxxx  gigc_chunk_mod_mp        1277  gigc_chunk_mod.F90
 
 Then look in this page for the error that corresponds to where the model has crashed.
 

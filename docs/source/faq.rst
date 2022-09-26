@@ -77,7 +77,7 @@ Yes. You want to edit the HEMCO configuration file (``HEMCO_Config.rc``), like i
 
 For emission inventories from WRF-Chem (e.g., prepared by ``prep_chem_sources``), these inventories need to be ported to HEMCO to function with WRF-GC. We do not support WRF-Chem style emissions (i.e., "auxinput05") within WRF-GC.
 
-Running and configuration/
+Running and configuration
 -------------------------
 
 Can I use WRF-GC to run Hg/CH4/CO2 specialty simulations?
@@ -156,6 +156,8 @@ This will remove ``sala`` and ``salc`` from the output file (``wrfout_``...), wh
 .. code-block::
 
 	iofields_filename = 'outputlist.txt',
+
+If you want to remove pretty much all the species and only select the ones available, you can start from the species list in ``Registry/registry.chem`` (search for ``chem_opt==233``), and use that comma-separated list.
 
 Can I output GEOS-Chem diagnostics?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
