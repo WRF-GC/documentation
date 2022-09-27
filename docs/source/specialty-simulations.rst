@@ -4,6 +4,9 @@ Running specialty simulations
 .. warning::
 	Running CO2 and CH4 specialty simulations in WRF-GC is a feature available in WRF-GC 3.0 or later. This version of WRF-GC is currently work in progress and not ready for release.
 
+.. warning::
+	Reminder: Do not copy WRF-GC source code directories. When moving directories, or starting a different type of simulation, always extract a fresh copy of WRF and WRF-GC (``chem`` directory) source code without copying the old code. Once the compile process is finished, that copy of WRF-GC is fixed to the directory path it was compiled in and cannot be easily moved.
+
 Installing WRF-GC with specialty simulations
 ---------------------------------------------
 
@@ -39,7 +42,7 @@ Apart from the emission files specified in ``HEMCO_Config.rc`` for specialty sim
 	spc_map = 'ch4 -> CH4',
 	/
 
-* (CH4 simulation only) **High-resolution OH and Cl concentrations**. By default, ``HEMCO_Config.rc`` uses 4x5 degree species maps, which greatly degrades the spatial resolution of the run, even if WRF-GC runs at higher resolution. These are specified in ``HEMCO_Config.rc`` here:
+* (CH4 simulation only) **High-resolution OH and Cl concentrations**. By default, ``HEMCO_Config.rc`` uses 4x5 degree species maps, even if WRF-GC runs at higher resolution. You may want to replace these with higher resolution OH and Cl data. These are specified in ``HEMCO_Config.rc`` here:
 
 .. code-block::
 
@@ -51,7 +54,7 @@ Apart from the emission files specified in ``HEMCO_Config.rc`` for specialty sim
 	)))GLOBAL_CL
 	)))CHEMISTRY_INPUT
 
-We recommend making a high-resolution WRF-GC run with the same domain, extracting the ``oh`` and ``cl`` variables, and converting the units (WRF-GC output is in ppmv):
+To generate high-resolution data, you can use a full chemistry WRF-GC run with the same domain, extracting the ``oh`` and ``cl`` variables, and converting the units (WRF-GC output is in ppmv):
 
 * ``oh`` unit should be converted from ppmv to kg/m3;
 * ``cl`` unit should be converted from ppmv to v/v dry; multiply by 1e-6.
