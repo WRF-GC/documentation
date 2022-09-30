@@ -14,9 +14,14 @@ Changelog
 * Enhancement: New coupler species generation infrastructure shared with CESM2-GC.
 * Enhancement: Support for ``QV2M`` met field for online blowing snow emissions.
 * Bugfix: Fix stack corruption issue in ``chemics_init`` coordinates.
-* Bugfix: More robust support for ``get_last_gas`` due to WRF upstream updates.
+* Bugfix: More robust support for ``get_last_gas`` due to WRFv4 upstream updates.
 * Bugfix: Month-boundary HEMCO emissions missing timesteps.
 * Bugfix: ParaNOx stability issue via upstream GEOS-Chem 14.0.1 fix.
+* Bugfix: Initial condition input bug for nested domain(s).
+
+v2.0.2 (September 30, 2022)
+----------------------------
+* Bugfix: Initial condition input bug for nested domain(s). (Backport)
 
 v2.0.1 (September 16, 2021)
 ----------------------------
@@ -40,7 +45,7 @@ v2.0 (April 7, 2020)
 
 v0.92 (January 2, 2021)
 -----------------------
-* Bugfix: Backported fix for HEMCO 3.0 (Lin et al., 2021 GMD) supporting vertical regridding of emissions data.
+* Bugfix: Fix for HEMCO 3.0 (Lin et al., 2021 GMD) supporting vertical regridding of emissions data. (Backport)
 
 v0.91 (July 6, 2020)
 --------------------

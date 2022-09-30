@@ -180,6 +180,8 @@ You can control individual processes in GEOS-Chem using:
 
 By setting these switches to ``0`` (off) or ``1`` (on).
 
+If you have initial/boundary conditions, set ``chem_in_opt = 1`` for each domain and ``have_bcs_chem = .true.`` for domain 1, ``.false.`` otherwise.
+
 To configure some simple GEOS-Chem diagnostics, add options to ``&chem`` following the guide in :doc:`/extra-diagnostics`.
 
 Configuring WRF-GC - ``input.geos`` (or ``geoschem_config.yml``)
