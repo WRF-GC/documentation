@@ -156,20 +156,43 @@ We do not discuss WRF configuration options in detail here and invite you to ref
 * **Restarts.** If this is a restart run (running from existing ``wrfrst_d<domain>_<date>`` file), set ``restart = .true.``. By default should be set to ``.false.``.
 * **Write out restart files.** Set ``restart_interval`` (in minutes).
 
+&domains
+^^^^^^^^
+
+Configure according to your ``namelist.wps``.
+
+If running nested domains and having complications getting the model to run successfully, you can turn off two-way nesting which passes information from the higher-resolution nests to the lower-resolution parent domains, using ``feedback = 0``. Otherwise, use ``feedback = 1``.
+
 &physics
 ^^^^^^^^
 
 * **Microphysics scheme.** (``mp_physics``): We recommend the Morrison Double-Moment scheme (``mp_physics = 10``).
 * **Cumulus parameterization scheme.** (``cu_physics``): We recommend New-Tiedke scheme (``cu_physics = 16``).
+* **Prognostic aerosol information.** For ``progn`` setting, see "Aerosol-Cloud Interaction" in the ``&chem`` section below.
+
+&dynamics
+^^^^^^^^^
+
+**Important advection options.** It is very important to have advection setups chosen as:
+
+.. code-block::
+
+	chem_adv_opt = 2,
+	moist_adv_opt = 2,
+	scalar_adv_opt = 2,
+	tke_adv_opt = 2,
+	diff_6th_opt = 0
+
+This is following the guidance in the `WRF-Chem User's Guide <https://ruc.noaa.gov/wrf/wrf-chem/Users_guide.pdf>`_, which writes that "*The above options should always be used when running chemistry simulations. The WRF advection scheme has the tendency to overshoot and produce locally unrealistically low values (referred to at times as digging holes) if those options are not turned on. This digging is stronger with stronger gradients like those found where there are high emission rates*".
 
 &chem
 ^^^^^
 
 Configuration of chemistry is within the ``&chem`` section.
 
-**For WRF-GC chemistry,** set ``chem_opt = 233``.
+**For WRF-GC chemistry,** set ``chem_opt = 233``. Set ``chemdt = 10`` for 27km and resolution and scale down for higher resolutions, including for nested domains.
 
-You can control individual processes in GEOS-Chem using:
+**You can control individual processes in GEOS-Chem** using:
 
 * Convection: ``gc_do_convection``
 * Emissions: ``gc_do_hemco``
@@ -183,6 +206,16 @@ By setting these switches to ``0`` (off) or ``1`` (on).
 If you have initial/boundary conditions, set ``chem_in_opt = 1`` for each domain and ``have_bcs_chem = .true.`` for domain 1, ``.false.`` otherwise.
 
 To configure some simple GEOS-Chem diagnostics, add options to ``&chem`` following the guide in :doc:`/extra-diagnostics`.
+
+**To enable aerosol-radiation interactions or aerosol-cloud interactions**, use:
+
+* Aerosol-radiation interactions: ``aer_ra_feedback = 1``
+* Aerosol-cloud interactions: ``aer_cu_feedback = 1``. Also set ``progn = 1`` in ``&physics`` section.
+
+**If you have initial and boundary conditions:** (you should), use:
+
+* ``have_bcs_chem = .true.`` (for nested-domains, set ``.true.`` for the first domain and ``.false.`` for others)
+* ``chem_in_opt = 1`` for all domains.
 
 Configuring WRF-GC - ``input.geos`` (or ``geoschem_config.yml``)
 ------------------------------------------------------------------
