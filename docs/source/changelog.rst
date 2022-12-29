@@ -3,8 +3,8 @@ Changelog
 
 2022 Technology Preview - work in progress
 ------------------------------------------
-* *Currently unreleased*. This technology preview is targeting a 3.0 release.
-* Feature: Supports **GEOS-Chem 14.0.0-rc.3**, **KPP 3.0.0-rc.3**, and **HEMCO 3.5.0**.
+* *Currently unreleased*. This technology preview is targeting a 3.0 release with GEOS-Chem 14.1.0.
+* Feature: Supports **GEOS-Chem 14.1.0-alpha.8**, **KPP 3.0.0-rc.3**, and **HEMCO 3.5.2**.
 * Feature: Supports **WRF version 4.4**.
 * Feature: Infrastructure for specialty simulations. Now can install couplers for fullchem, ch4, and co2 using the ``install_registry`` command.
 * Feature: Compiles GEOS-Chem 13+ without using CMake by maintaining the legacy GNU infrastructure.
@@ -16,7 +16,7 @@ Changelog
 * Bugfix: Fix stack corruption issue in ``chemics_init`` coordinates.
 * Bugfix: More robust support for ``get_last_gas`` due to WRFv4 upstream updates.
 * Bugfix: Month-boundary HEMCO emissions missing timesteps.
-* Bugfix: ParaNOx stability issue via upstream GEOS-Chem 14.0.1 fix.
+* Bugfix: ParaNOx stability issue via upstream GEOS-Chem 14.0.1 fix. Note that according to `Colombi et al., 2022 ACPD (in review) <https://egusphere.copernicus.org/preprints/2022/egusphere-2022-1366/>`_ it may not be necessary to use ParaNOx for high-resolution simulations with WRF-GC.
 * Bugfix: Initial condition input bug for nested domain(s).
 
 v2.0.2 (September 30, 2022)
