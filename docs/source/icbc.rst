@@ -25,22 +25,59 @@ We recommend running at a resolution 2 x 2.5 degree because this will provide hi
 
 The running time must cover the WRF-GC simulation period, **with at least one day preceding**: e.g. if the simulation period of WRF-GC is from 2015-06-10 00:00:00 to 2015-06-20 00:00:00 (UTC), the time ranges for GEOS-Chem should be **at least** available from 2015-06-09 00:00:00 to 2015-06-20 00:00:00, not including necessary initialization (spin-up).
 
-   Output the netCDF diagnostic files every 6 hours (00, 06, 12, 18), including:
+Output the netCDF diagnostic files every 6 hours (00, 06, 12, 18), including:
 
-    (a) ``GEOSChem.SpeciesConc.xxxxxxxxxxxxxx.nc4`` (contains **instantaneous** ``SpeciesConc_?ADV?``)
+(a) ``GEOSChem.SpeciesConc.YYYYMMDD_HHIIz.nc4`` (contains **instantaneous** ``SpeciesConc_?ADV?``)
 
-    (b) ``GEOSChem.StateMet.xxxxxxxxxxxxxx.nc4`` (contains ``Met_PS1DRY``).
+(b) ``GEOSChem.StateMet.YYYYMMDD_HHIIz.nc4`` (contains ``Met_PS1DRY``).
+
+Using the ``HISTORY.rc`` configuration similar to follows:
+
+.. code-block::
+
+          SpeciesConc.template:       '%y4%m2%d2_%h2%n2z.nc4',
+          SpeciesConc.frequency:      00000000 060000
+          SpeciesConc.duration:       00000000 060000
+          SpeciesConc.mode:           'instantaneous'
+          SpeciesConc.fields:         'SpeciesConc_?ALL?             ',
+        ::
+
+          StateMet.template:          '%y4%m2%d2_%h2%n2z.nc4',
+          StateMet.frequency:         00000000 060000
+          StateMet.duration:          00000000 060000
+          StateMet.mode:              'instantaneous'
+          StateMet.fields:            'Met_AD                        ',
+                                      'Met_AIRDEN                    ',
+                                      'Met_AIRVOL                    ',
+                                      'Met_BXHEIGHT                  ',
+                                      'Met_PBLTOPL                   ',
+                                      'Met_PBLH                      ',
+                                      'Met_PMID                      ',
+                                      'Met_PMIDDRY                   ',
+                                      'Met_PS1DRY                    ',
+                                      'Met_PS1WET                    ',
+                                      'Met_PS2DRY                    ',
+                                      'Met_PS2WET                    ',
+                                      'Met_PSC2WET                   ',
+                                      'Met_PSC2DRY                   ',
+                                      'Met_T                         ',
+                                      'Met_TO3                       ',
+                                      'Met_TropHt                    ',
+                                      'Met_TropLev                   ',
+                                      'Met_TropP                     ',
+                                      'Met_TS                        ',
+        ::
+
 
 Converting GEOS-Chem output to mozbc readable format
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Use the MATLAB script ``convert_gcoutput_mozart_structure_selected_domain.m`` (GNU Octave may work as well) to merge the GEOS-Chem output files and reconstruct the data structure for ``mozbc`` to read.
+Use the MATLAB script ``convert_gcoutput_mozart_structure_selected_domain.m`` (`available here <https://github.com/fengx7/WRF-GC-GCC_ICBC/blob/master/convert_gcoutput_mozart_structure_selected_domain.m>`_, GNU Octave may work as well) to merge the GEOS-Chem output files and reconstruct the data structure for ``mozbc`` to read.
 
 Run the script in the GEOS-Chem output directory (``OutputDir``). Modify the script before running as follows:
 
-(a) ``filename_input``: set the input filename as any one of the GEOS-Chem species concentration output files, e.g.
-    ``GEOSChem.SpeciesConc.20150601_0000z.nc4``.
+(a) ``filename_input``: set the input filename as any one of the GEOS-Chem species concentration output files, e.g. ``GEOSChem.SpeciesConc.20150601_0000z.nc4``.
 
-(b) ``filename_output``: set the output filename freely.
+(b) ``filename_output``: set the output filename freely. **If your file is too large, you may want to split the dates into separate files.** In this case, the file names must end in 4-character integers, i.e., ``0001.nc``, ``0002.nc``, ``0003.nc``, ...
 
 (c) ``simulation_4_5``/``simulation_2_25``:
 
@@ -69,14 +106,9 @@ If the resolution of global GEOS-Chem simulation is 4×5 degree, please set it a
         startdate                    = 7;
         enddate                      = 21;
 
-(e) Set the domain for output file (needs to be larger than your WRF-GC domain)
+(e) Set the domain for output file (needs to be larger than your WRF-GC domain). The subsetting is index-based.
 
-If the resolution of global GEOS-Chem simulation is 2x2.5:
-
-longitude: 0 (index 1):2.5:357.5 (index 144)
-latitude: -90 (index 1):2:90 (index 91)
-
-Here is an example:
+For example, if the resolution of global GEOS-Chem simulation is 2x2.5, longitude indices range from 0 to 144 and correspond to longitudes ``0:2.5:357.5``, latitude indices range from 1 to 91 and correspond to ``-90:2:90``. Then these indices would be set in the script as follows:
 
 .. code-block::
 
@@ -90,6 +122,10 @@ The netCDF file will be generated after running the script.
 .. info::
 
     If you want to use data from other year / months to run WRF-GC, you can tweak the script to read alternative GEOS-Chem output file names. The time slices in the GEOS-Chem output files is not checked by the script.
+
+.. warning::
+
+    If the script is taking too long to write the netCDF output file, try splitting the file into multiple contiguous date chunks. ``mozbc`` will be able to read and automatically increment the file number, provided they end with four integer digits.
 
 Preparing IC/BC file from CAM-chem/WACCM output
 ------------------------------------------------

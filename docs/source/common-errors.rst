@@ -82,11 +82,20 @@ If you see an error similar to:
   d01 2016-05-11_12:00:00 ---- ERROR: Mismatch between namelist and input file dimensions
   NOTE:       1 namelist vs input data inconsistencies found.
 
+or
+
+.. code-block::
+
+  d01 2016-04-23_00:00:00  input_wrf.F: SIZE MISMATCH:  namelist num_metgrid_levels           =           34
+  d01 2016-04-23_00:00:00  input_wrf.F: SIZE MISMATCH:  input file BOTTOM-TOP_GRID_DIMENSION  =           27
+  d01 2016-04-23_00:00:00 ---- ERROR: Mismatch between namelist and input file dimensions
+  NOTE:       1 namelist vs input data inconsistencies found.
+
 You've hit a problem where your meteorology data source (e.g., GFS) has updated **during your model run times!** This doesn't happen often but you are bound to run into it sometime - see the list of updates and their dates `on this changelog page <https://www.nco.ncep.noaa.gov/pmb/changes/>`_ from NOAA.
 
-**If your model run time did go across two GFS/FNL updates:** Usually this can be fixed by making a custom data request, e.g., in FNL `at the NCAR/UCAR Research Data Archive (RDA) <https://rda.ucar.edu/datasets/ds083.2/index.html#!access>`__ with a consistent number of vertical levels, and this can be solved.
-
 **If your model run time did not go across:** Then maybe you're using old data and ``num_metgrid_levels`` is different. For example, try changing the ``namelist.input`` so it has the right number (in this case ``32`` instead of ``27``). If this doesn't fix the issue, see above.
+
+**If your model run time did go across two GFS/FNL updates:** Usually this can be fixed by making a custom data request, e.g., in FNL `at the NCAR/UCAR Research Data Archive (RDA) <https://rda.ucar.edu/datasets/ds083.2/index.html#!access>`__ with a consistent number of vertical levels, and this can be solved.
 
 GEOS-CHEM USES A VERTICAL HYBRID-SIGMA GRID. WRF MUST BE CONFIGURED TO USE THIS GRID
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
