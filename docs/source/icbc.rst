@@ -119,9 +119,10 @@ For example, if the resolution of global GEOS-Chem simulation is 2x2.5, longitud
 
 The netCDF file will be generated after running the script.
 
-.. info::
+.. note::
 
     If you want to use data from other year / months to run WRF-GC, you can tweak the script to read alternative GEOS-Chem output file names. The time slices in the GEOS-Chem output files is not checked by the script.
+
 
 .. warning::
 
