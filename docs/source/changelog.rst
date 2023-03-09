@@ -4,7 +4,7 @@ Changelog
 2022 Technology Preview - work in progress
 ------------------------------------------
 * *Currently unreleased*. This technology preview is targeting a 3.0 release with GEOS-Chem 14.1.0.
-* Feature: Supports **GEOS-Chem 14.1.0-alpha.8**, **KPP 3.0.0-rc.3**, and **HEMCO 3.5.2**.
+* Feature: Supports **GEOS-Chem 14.1.1**, **KPP 3.0.0**, and **HEMCO 3.6.2**.
 * Feature: Supports **WRF version 4.4**.
 * Feature: Infrastructure for specialty simulations. Now can install couplers for fullchem, ch4, and co2 using the ``install_registry`` command.
 * Feature: Compiles GEOS-Chem 13+ without using CMake by maintaining the legacy GNU infrastructure.

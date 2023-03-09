@@ -133,6 +133,23 @@ The species numbers in the diagnostics (:doc:`/extra-diagnostics`) are incorrect
    gc_diagn_spc_n2                     = 0,
    gc_diagn_spc_n3                     = 0,
 
+the domain size is too small for this many processors, or the decomposition aspect ratio is poor.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Short answer: Try to reduce the number of processors used in running WRF-GC.
+
+Long answer: This warning message was added by WRF in order to avoid domains to be decomposed into too small chunks, where the overhead in cross-processor communication may exceed improvements by scaling. However, it appears that this error does not consider that chemistry needs more CPUs to scale and improvements may be seen even with a decomposed domain smaller than 10x10 in each core.
+
+You may be able to work around this by patching ``WRF/share/module_check_a_mundo.F``
+
+.. code-block::
+
+   IF ( ( model_config_rec % e_we(i) /  model_config_rec % nproc_x .LT. 10 ) .OR. &
+      ( model_config_rec % e_sn(i) /  model_config_rec % nproc_y .LT. 10 ) ) THEN
+
+And changing the parameters ``10`` to something like ``5``. But take care that you may see diminishing returns as the number of processors increase.
+
+
 GEOS-Chem related errors
 ------------------------
 
