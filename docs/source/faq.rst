@@ -19,7 +19,7 @@ Can I run WRF-GC on my own computer?
 
 Generally we recommend running on a computing cluster. If this is not possible, cloud services such as AWS may also be available.
 
-If you want to test WRF-GC locally, a Linux system with at least 8 *recent* (consumer CPUs: Intel Haswell, 4th-generation Core; AMD Ryzen) CPU cores, 32 GB of memory is recommended. However, running on your own computer may be extremely slow and only recommended for debugging.
+If you want to test WRF-GC locally, a Linux system with at least 8 *recent* (consumer CPUs: Intel Skylake, 6th-generation Core; AMD Ryzen Zen 2 and above, 3xxx-series) CPU cores, 64 GB of memory is recommended. However, running on your own computer may be extremely slow and only recommended for debugging.
 
 I want to build a cluster for my lab to run WRF-GC. What do you recommend?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

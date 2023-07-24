@@ -169,6 +169,7 @@ If running nested domains and having complications getting the model to run succ
 * **Microphysics scheme.** (``mp_physics``): We recommend the Morrison Double-Moment scheme (``mp_physics = 10``).
 * **Cumulus parameterization scheme.** (``cu_physics``): We recommend New-Tiedke scheme (``cu_physics = 16``).
 * **Prognostic aerosol information.** For ``progn`` setting, see "Aerosol-Cloud Interaction" in the ``&chem`` section below.
+* **Vertical grid configuration.** You can configure the vertical grid using ``p_top_requested`` (model top hPa) and ``e_vert`` (number of vertical levels) namelist options. You can see the computed levels after running ``real.exe``, it will be part of the log file output. Advanced control of individual levels may also be available. `Refer to the WRF User's Guide <https://www2.mmm.ucar.edu/wrf/users/docs/user_guide_V3/user_guide_V3.9/users_guide_chap5.htm#hybrid_vert_coord>`_.
 
 &dynamics
 ^^^^^^^^^
