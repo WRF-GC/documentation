@@ -91,10 +91,9 @@ GEOS-Chem shared inputs ("ExtData")
 
 Download the GEOS-Chem input data directories, specifically ``HEMCO`` and ``CHEM_INPUTS``. For ``HEMCO`` they are very large, and you only need to download folders corresponding to the simulation year(s) you expect to run.
 
-Refer to the GEOS-Chem User's Guide:
-* `Downloading data from WashU <http://wiki.seas.harvard.edu/geos-chem/index.php/Downloading_data_from_WashU>`_
+Refer to the `GEOS-Chem User's Guide <https://geos-chem.readthedocs.io/en/stable/gcc-guide/04-data/input-overview.html>`_ for downloading data from WashU/WUSTL (recommended) or from Amazon Web Services/AWS (if you are running on AWS, otherwise chargeable).
 
-WRF-GC needs ``ExtData/HEMCO/`` and ``ExtData/CHEM_INPUTS/``.
+WRF-GC needs ``ExtData/HEMCO/`` and ``ExtData/CHEM_INPUTS/``. You may not need to download all data for WRF-GC but we currently do not have a subset list of files.
 
 If you are running GEOS-Chem as well (e.g., for making WRF-GC boundary / initial conditions), you also need some meteorology fields, etc. Refer to the GEOS-Chem User's Guide.
 
