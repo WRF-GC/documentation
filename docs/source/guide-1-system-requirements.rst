@@ -43,6 +43,7 @@ Your system administrator may have installed these packages. For example, on the
 	**Special note about the netCDF libraries.** Since version 4, netCDF has been split into "netCDF-C" and "netCDF-Fortran". **Both of these are required for WRF-GC**, and WRF expects them to be in the same folder. This is problematic in some clusters, as they may store ``netcdf`` and ``netcdf-fortran`` in different paths. The solution is to create your own paths, e.g., ``~/wrf-gc/include``, ``~/wrf-gc/bin``, and ``~/wrf-gc/lib``, and link the netCDF-C and netCDF-Fortran files into these folders respectively. e.g.,
 
 	.. code-block::
+
 		ln -sf $NETCDF_HOME/lib64/* lib/
 		ln -sf $NETCDF_FORTRAN_HOME/lib/* lib/
 		ln -sf $NETCDF_HOME/bin/* bin/
@@ -50,7 +51,7 @@ Your system administrator may have installed these packages. For example, on the
 		ln -sf $NETCDF_HOME/include/* include/
 		ln -sf $NETCDF_FORTRAN_HOME/include/* include/
 
-Then see the environment configuration above to point WRF-GC to the libraries.
+	Then see the environment configuration above to point WRF-GC to the libraries.
 
 Running on AWS or with Spack
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
