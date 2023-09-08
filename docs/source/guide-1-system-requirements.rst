@@ -13,9 +13,9 @@ Software requirements
 
 You will need a **Linux** system with the following compilers, libraries, and tools:
 
-* **Compiler:** Intel (version 15 or above), or gfortran.
-* **MPI Library:** MVAPICH2 (version 2.3 or above), OpenMPI, or Intel MPI.
-* zlib, hdf5 (version 1.8 or above), netCDF-C (version 4.6.1 or above), netCDF-Fortran (version 4.4.4 or above), JasPer (version 1.900)
+* **Compiler:** Intel C & `Fortran compilers <https://www.intel.com/content/www/us/en/developer/tools/oneapi/fortran-compiler.html#gs.5fcxky>`_ (version 15 or above), or gfortran.
+* **MPI Library:** `MVAPICH2 <https://mvapich.cse.ohio-state.edu/>`_ (version 2.3 or above), OpenMPI, or Intel MPI. A MPI library is required even if you are running on a single node.
+* `zlib <https://www.zlib.net/>`_, `hdf5 <https://www.hdfgroup.org/downloads/hdf5/>`_ (version 1.8 or above), `netCDF-C <https://github.com/Unidata/netcdf-c>`_ (version 4.6.1 or above), `netCDF-Fortran <https://github.com/Unidata/netcdf-fortran>`_ (version 4.4.4 or above), `JasPer <https://www.ece.uvic.ca/~frodo/jasper/>`_ (version 1.900, scroll down to the "obsolete" versions)
 * Git version management
 
 If you already run GEOS-Chem, you may already have met the compiler and netCDF requirements.
