@@ -27,6 +27,8 @@ Go to the ``WRF`` folder.
 
 Select the compiler option corresponding to your environment, and select the **(dmpar) option**. e.g., Intel compiler, icc, ifort, (dmpar). dmpar is required and means distributed-memory parallel, which uses MPI and is used by WRF-GC.
 
+For nesting option, select 1 = basic. Other nesting options are unsupported.
+
 Installing the GEOS-Chem species into WRF
 ------------------------------------------
 
@@ -77,3 +79,21 @@ Compiling WPS
 3. Run ``./compile``.
 
 If you encounter errors, note them down. A list of common errors is available at :doc:`/common-errors`.
+
+Compiling after code changes
+----------------------------
+
+To recompile WRF after changing code, you can just run
+
+.. code-block::
+
+    ./compile em_real
+
+Again in the WRF root directory.
+
+**If you have changed the species list** (``registry.chem``), in which case you will have to clean everything and rebuild:
+
+.. code-block::
+
+	./clean -a
+	./compile em_real

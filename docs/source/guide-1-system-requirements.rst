@@ -13,7 +13,7 @@ Software requirements
 
 You will need a **Linux** system with the following compilers, libraries, and tools:
 
-* **Compiler:** Intel C & `Fortran compilers <https://www.intel.com/content/www/us/en/developer/tools/oneapi/fortran-compiler.html#gs.5fcxky>`_ (version 15 or above), or gfortran.
+* **Compiler:** Intel C & `Fortran compilers <https://www.intel.com/content/www/us/en/developer/tools/oneapi/fortran-compiler.html#gs.5fcxky>`_ (**recommended**, version 15 or above), or gfortran.
 * **MPI Library:** `MVAPICH2 <https://mvapich.cse.ohio-state.edu/>`_ (version 2.3 or above), OpenMPI, or Intel MPI. A MPI library is required even if you are running on a single node.
 * `zlib <https://www.zlib.net/>`_, `hdf5 <https://www.hdfgroup.org/downloads/hdf5/>`_ (version 1.8 or above), `netCDF-C <https://github.com/Unidata/netcdf-c>`_ (version 4.6.1 or above), `netCDF-Fortran <https://github.com/Unidata/netcdf-fortran>`_ (version 4.4.4 or above), `JasPer <https://www.ece.uvic.ca/~frodo/jasper/>`_ (version 1.900, scroll down to the "obsolete" versions)
 * Git version management
@@ -32,11 +32,9 @@ Your system administrator may have installed these packages. For example, on the
 
 .. code-block::
 
-	module load git/2.17.0-fasrc01
-	module load intel/17.0.4-fasrc01
-	module load openmpi/2.1.0-fasrc02
-	module load netcdf/4.5.0-fasrc02
-	module load netcdf-fortran/4.4.4-fasrc06
+	module load intel/23.0.0-fasrc01 openmpi/4.1.4-fasrc01 netcdf-c/4.9.2-fasrc01 netcdf-fortran/4.6.0-fasrc02 flex/2.6.4-fasrc01
+	module load cmake/3.25.2-fasrc01
+	module load zlib/1.2.13-fasrc01
 	module load jasper/1.900.1-fasrc02
 
 .. note::
@@ -115,14 +113,14 @@ Environmental configuration file (for reference)
 
 Below is an example environment file using the Intel compilers + OpenMPI. The following need to be edited to fit your system:
 
-* ``NETCDF`` needs to point to your netCDF install (inside this path there should be ``bin``, ``lib``, ``include`` for both NetCDF-C and NetCDF-Fortran)
+* ``NETCDF`` needs to point to your netCDF install (inside this path there should be ``bin``, ``lib``, ``include`` for **both** NetCDF-C and NetCDF-Fortran. See notes above)
 * ``JASPERLIB`` needs to point to your JasPer install's ``lib`` folder
 * ``JASPERINC`` needs to point to your JasPer install's ``include`` folder
-* ``NETCDF_HOME`` and ``NETCDF_FORTRAN_HOME`` point to NetCDF-C and NetCDF-Fortran. Can be the same as ``$NETCDF``
+* ``NETCDF_HOME`` and ``NETCDF_FORTRAN_HOME`` point to NetCDF-C and NetCDF-Fortran, respectively. Can be the same as ``$NETCDF``
 
 If you are using the GNU compilers (``gcc`` and ``gfortran``), you also need to edit:
 
-* ``CC=gcc``, ``CXX=gcc``, ``FC=gfortran``, ``ESMF_COMPILER=gfortran``
+* ``CC=gcc``, ``CXX=gcc``, ``FC=gfortran``, ``ESMF_COMPILER=gfortran``. Also, note in the FAQ that you may need some code edits to WRF for compiling WRFv3 with gfortran.
 
 If you are using other MPI libraries, you also need to edit:
 

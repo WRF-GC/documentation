@@ -59,6 +59,11 @@ Cannot find input.geos, HEMCO_Config.rc or other configuration files in the run 
 
 Make sure that you have compiled with ``export WRF_CHEM=1``, which enables chemistry compilation. If this was not done, you **must** start over going to ``WRF/``, ``./clean -a``, then ``./compile em_real`` again.
 
+Error: Dummy argument ‘datasetname’ with INTENT(IN) in variable definition context (actual argument to INTENT = OUT/INOUT) at (1)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This happens if you are using GNU Fortran (gfortran) compilers version 10 and above to try to build WRF v3. You may have to `apply these patches manually to your WRF installation <https://github.com/wrf-model/WRF/pull/1251/files>`_ to get gfortran to compile.
+
 WPS-related errors
 -------------------
 
