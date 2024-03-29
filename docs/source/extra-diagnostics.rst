@@ -1,13 +1,39 @@
 Additional diagnostics
 =======================
+For WRF-GC 3.0
+---------------------
+Since WRF-GC 3.0, we reimplement the GEOS-Chem diagnostics (specified in ``HISTORY.rc``) and HEMCO diagnostices (specieied in ``HEMCO_Diagn.rc`` and ``HEMCO_Config.rc``). 
+To enable WRF-GC 3.0 diagnostics, you need to install and define ``PNETCDF`` in your environmental configuration file **before** you compile WRF-GC. 
 
-By default, WRF-GC outputs **all instantaneous species mixing ratios (ppmv)** at the output frequency (``history_interval`` in ``namelist.input``). However, other diagnostics provided by GEOS-Chem may be useful for your research. We document some methods to write GEOS-Chem diagnostics in WRF-GC.
+For HISTORY.rc we currently support attributes:
+
+- template
+- frequency
+- duration
+- mode
+
+Not supported:
+
+- LON_RANGE
+- LAT_RANGE
+- levels
+
+For more information about ``History diagnostics``, please refer to `GEOS-Chem document<https://wiki.seas.harvard.edu/geos-chem/index.php/Overview_of_History_diagnostics>`_. 
+
+.. note::
+	``SpeciesConc`` collection in GEOS-Chem is still output through ``wrfout``, it is not available in ``HISTORY.rc``. Turning on this collection in ``HISTORY.rc`` may cause errors.
+
+For HEMCO diagnostics, we current only support ``instantaneous`` mode, for more information, please refer to `HEMCO diagnostics<https://hemco.readthedocs.io/en/stable/hco-ref-guide/diagnostics.html>`_.
+
+For WRF-GC 2.0
+----------------
+By default, WRF-GC 2.0 outputs **all instantaneous species mixing ratios (ppmv)** at the output frequency (``history_interval`` in ``namelist.input``). However, other diagnostics provided by GEOS-Chem may be useful for your research. We document some methods to write GEOS-Chem diagnostics in WRF-GC.
 
 .. note::
 	Because WRF-GC uses WRF as output, GEOS-Chem diagnostics (specified in ``HISTORY.rc``) are unavailable in WRF-GC. But they can be written using some light code editing.
 
 Limited support for GEOS-Chem diagnostics
-------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following GEOS-Chem diagnostics (from `the GEOS-Chem netCDF/History diagnostics list <http://wiki.seas.harvard.edu/geos-chem/index.php/Collections_for_History_diagnostics>`_) are supported in a limited way:
 
@@ -60,6 +86,7 @@ The species list corresponding to their IDs can be obtained in the ``rsl.out.000
 
 
 Writing custom diagnostics from the GEOS-Chem/HEMCO models
------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Please refer to `Haipeng's website on outputting extra diagnostics <https://jimmielin.me/2020/wrfgc-extra-diags/>`_ for now. We will migrate this page later.
+
