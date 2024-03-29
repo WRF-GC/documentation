@@ -17,6 +17,7 @@ You will need a **Linux** system with the following compilers, libraries, and to
 * **MPI Library:** `MVAPICH2 <https://mvapich.cse.ohio-state.edu/>`_ (version 2.3 or above), OpenMPI, or Intel MPI. A MPI library is required even if you are running on a single node.
 * `zlib <https://www.zlib.net/>`_, `hdf5 <https://www.hdfgroup.org/downloads/hdf5/>`_ (version 1.8 or above), `netCDF-C <https://github.com/Unidata/netcdf-c>`_ (version 4.6.1 or above), `netCDF-Fortran <https://github.com/Unidata/netcdf-fortran>`_ (version 4.4.4 or above), `JasPer <https://www.ece.uvic.ca/~frodo/jasper/>`_ (version 1.900, scroll down to the "obsolete" versions)
 * Git version management
+* **Optional**: `PNETCDF <https://parallel-netcdf.github.io/>`_ (version 1.12.3 or above, for WRF-GC 3.0 diagnostic function)
 
 If you already run GEOS-Chem, you may already have met the compiler and netCDF requirements.
 
@@ -117,6 +118,7 @@ Below is an example environment file using the Intel compilers + OpenMPI. The fo
 * ``JASPERLIB`` needs to point to your JasPer install's ``lib`` folder
 * ``JASPERINC`` needs to point to your JasPer install's ``include`` folder
 * ``NETCDF_HOME`` and ``NETCDF_FORTRAN_HOME`` point to NetCDF-C and NetCDF-Fortran, respectively. Can be the same as ``$NETCDF``
+* ``PNETCDF``(optional) needs to point to your PNETCDF install (inside this path there should be ``bin``, ``lib``, ``include``), if not defined, the diagnostic function of WRF-GC 3.0 will not be enabled.
 
 If you are using the GNU compilers (``gcc`` and ``gfortran``), you also need to edit:
 
