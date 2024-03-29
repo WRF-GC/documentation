@@ -22,10 +22,6 @@ Downloading WRF
 
 Obtain the WRF model from `the NCAR/WRFV3 GitHub <https://github.com/NCAR/WRFV3/releases>`_ (version 3.9.1.1 for WRF-GC v1.0 and v2.0) or `the wrf-model/WRF GitHub <https://github.com/wrf-model/WRF/releases>`_ (version 4.0 and above for WRF-GC v3.0)
 
-**The currently supported version is WRF v3.9.1.1 (for WRF-GC v1.0 and v2.0).**
-
-.. note::
-	If you would like to use WRF version 4, please contact the WRF-GC team for an experimental version.
 
 For WRF-GC v1.0 and v2.0, use WRF version 3.9.1.1
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -49,7 +45,8 @@ Extract WRF into the ``WRFV4.X`` folder (version 4), and **rename it** to ``WRF`
 
 Downloading the WRF-GC coupler and GEOS-Chem model
 ---------------------------------------------------
-
+For WRF-GC v2.0
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 1. Go into the ``WRF`` folder and **delete** the existing WRF-Chem chemistry. Delete the ``chem`` folder entirely.
 
 2. **Clone the WRF-GC repository into the chem folder.**
@@ -58,7 +55,14 @@ Downloading the WRF-GC coupler and GEOS-Chem model
 
 	git clone https://github.com/jimmielin/wrf-gc-release.git chem
 
-**Make sure you have cloned this into the chem folder.** The folder should look like this:
+
+For WRF-GC v3.0
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1. Go into the ``WRF`` folder and **delete** the existing WRF-Chem chemistry. Delete the ``chem`` folder entirely.
+
+2. Download the code from `our website<https://www.download.atmoschem.org.cn/>`_, create an empty folder named ``chem``, extract the compressed file into ``chem`` folder.
+
+**Make sure you have the right code in the chem folder.** The folder should look like this:
 
 .. code-block::
 
