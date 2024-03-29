@@ -1,5 +1,8 @@
 Changelog
 ==========
+v3.0
+----------
+* Add support for History diagnostics and HEMCO diagnostics.
 
 2022 Technology Preview - work in progress
 ------------------------------------------
