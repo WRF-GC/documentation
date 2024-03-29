@@ -17,7 +17,7 @@ Your system may also have `ncview <http://meteora.ucsd.edu/~pierce/ncview_home_p
 Can I output GEOS-Chem / HEMCO diagnostics?
 --------------------------------------------
 
-Unfortunately, not exactly as GEOS-Chem does. Please refer to :doc:`/extra-diagnostics`.
+Now we have reimplement GEOS-Chem / HEMCO diagnostics in WRF-GC 3.0. Please refer to :doc:`/extra-diagnostics`.
 
 The outputs are too large / how can I compress them?
 -----------------------------------------------------
