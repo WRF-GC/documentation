@@ -1,9 +1,10 @@
 Additional diagnostics
 =======================
+
 For WRF-GC 3.0
----------------------
-Since WRF-GC 3.0, we reimplement the GEOS-Chem diagnostics (specified in ``HISTORY.rc``) and HEMCO diagnostices (specieied in ``HEMCO_Diagn.rc`` and ``HEMCO_Config.rc``). 
-To enable WRF-GC 3.0 diagnostics, you need to install and define ``PNETCDF`` in your environmental configuration file **before** you compile WRF-GC. 
+---------------
+Since WRF-GC 3.0, we reimplement the GEOS-Chem diagnostics (specified in ``HISTORY.rc``) and HEMCO diagnostics (specified in ``HEMCO_Diagn.rc`` and ``HEMCO_Config.rc``).
+To enable WRF-GC 3.0 diagnostics, you need to install and define ``PNETCDF`` in your environment configuration file **before** you compile WRF-GC.
 
 For HISTORY.rc we currently support attributes:
 
@@ -18,12 +19,14 @@ Not supported:
 - LAT_RANGE
 - levels
 
-For more information about ``History diagnostics``, please refer to `GEOS-Chem document<https://wiki.seas.harvard.edu/geos-chem/index.php/Overview_of_History_diagnostics>`_. 
+For more information about ``History diagnostics``, please refer to the `GEOS-Chem documentation <https://wiki.seas.harvard.edu/geos-chem/index.php/Overview_of_History_diagnostics>`_.
 
 .. note::
 	``SpeciesConc`` collection in GEOS-Chem is still output through ``wrfout``, it is not available in ``HISTORY.rc``. Turning on this collection in ``HISTORY.rc`` may cause errors.
 
-For HEMCO diagnostics, we current only support ``instantaneous`` mode, for more information, please refer to `HEMCO diagnostics<https://hemco.readthedocs.io/en/stable/hco-ref-guide/diagnostics.html>`_.
+For HEMCO diagnostics, we current only support ``instantaneous`` mode, for more information, please refer to `HEMCO diagnostics <https://hemco.readthedocs.io/en/stable/hco-ref-guide/diagnostics.html>`_.
+
+Legacy (WRF-GC 2.0) diagnostics are still supported and can be output through ``wrfout``, although they are considerably more limited than the new functionality.
 
 For WRF-GC 2.0
 ----------------
@@ -33,7 +36,7 @@ By default, WRF-GC 2.0 outputs **all instantaneous species mixing ratios (ppmv)*
 	Because WRF-GC uses WRF as output, GEOS-Chem diagnostics (specified in ``HISTORY.rc``) are unavailable in WRF-GC. But they can be written using some light code editing.
 
 Limited support for GEOS-Chem diagnostics
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following GEOS-Chem diagnostics (from `the GEOS-Chem netCDF/History diagnostics list <http://wiki.seas.harvard.edu/geos-chem/index.php/Collections_for_History_diagnostics>`_) are supported in a limited way:
 
