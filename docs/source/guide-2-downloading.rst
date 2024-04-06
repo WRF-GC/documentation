@@ -60,7 +60,7 @@ For WRF-GC v3.0
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 1. Go into the ``WRF`` folder and **delete** the existing WRF-Chem chemistry. Delete the ``chem`` folder entirely.
 
-2. Download the code from `our website<https://www.download.atmoschem.org.cn/>`_, create an empty folder named ``chem``, extract the compressed file into ``chem`` folder.
+2. Download the code from `our website <https://www.download.atmoschem.org.cn/>`_, create an empty folder named ``chem``, extract the compressed file into ``chem`` folder.
 
 **Make sure you have the right code in the chem folder.** The folder should look like this:
 
