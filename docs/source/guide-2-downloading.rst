@@ -54,7 +54,7 @@ For WRF-GC v3.0
 
 .. code-block::
 
-	git clone https://github.com/jimmielin/wrf-gc-release.git chem
+	git clone https://github.com/WRF-GC/wrf-gc-release.git chem
 
 
 For WRF-GC v2.0 (older, not recommended)
@@ -65,7 +65,7 @@ For WRF-GC v2.0 (older, not recommended)
 
 .. code-block::
 
-	git clone https://github.com/jimmielin/wrf-gc-release.git chem
+	git clone https://github.com/WRF-GC/wrf-gc-release.git chem
 
 3. In the ``chem`` folder, choose the older WRF-GC 2.0:
 
