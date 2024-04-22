@@ -45,6 +45,9 @@ If this step shows an error, make sure you did download WRF-GC into ``WRF/chem``
 	chem_driver.F 		Makefile 		gc 		config 
 	wrfgc_convert_state_mod.F ...
 
+.. note::
+	Starting in WRF-GC 3.0, similar to the out-of-box setup of the GEOS-Chem offline chemical transport model, the setup process will request some information about you for use statistic purposes. Even if you are a long-term WRF-GC and/or GEOS-Chem user, we ask that you help answer these questions to help us keep an accurate count of WRF-GC users.
+
 Compiling WRF-GC
 ----------------
 

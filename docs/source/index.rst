@@ -56,6 +56,7 @@ The key references for WRF-GC are:
    extra-diagnostics.rst
    newspecies.rst
    lightnox.rst
+   specialty-simulations.rst
 
 .. toctree::
    :maxdepth: 1

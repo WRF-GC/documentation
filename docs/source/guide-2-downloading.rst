@@ -45,7 +45,19 @@ Extract WRF into the ``WRFV4.X`` folder (version 4), and **rename it** to ``WRF`
 
 Downloading the WRF-GC coupler and GEOS-Chem model
 ---------------------------------------------------
-For WRF-GC v2.0
+
+For WRF-GC v3.0
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1. Go into the ``WRF`` folder and **delete** the existing WRF-Chem chemistry. Delete the ``chem`` folder entirely.
+
+2. **Clone the WRF-GC repository into the chem folder.** After April 22, 2024, the default release downloaded is version 3.0.
+
+.. code-block::
+
+	git clone https://github.com/jimmielin/wrf-gc-release.git chem
+
+
+For WRF-GC v2.0 (older, not recommended)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 1. Go into the ``WRF`` folder and **delete** the existing WRF-Chem chemistry. Delete the ``chem`` folder entirely.
 
@@ -55,12 +67,15 @@ For WRF-GC v2.0
 
 	git clone https://github.com/jimmielin/wrf-gc-release.git chem
 
+3. In the ``chem`` folder, choose the older WRF-GC 2.0:
 
-For WRF-GC v3.0
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-1. Go into the ``WRF`` folder and **delete** the existing WRF-Chem chemistry. Delete the ``chem`` folder entirely.
+.. code-block::
 
-2. Download the code from `our website <https://www.download.atmoschem.org.cn/>`_, create an empty folder named ``chem``, extract the compressed file into ``chem`` folder.
+	cd chem
+	git checkout v2.0
+
+After downloading
+-----------------
 
 **Make sure you have the right code in the chem folder.** The folder should look like this:
 

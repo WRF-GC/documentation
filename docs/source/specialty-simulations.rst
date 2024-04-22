@@ -2,7 +2,7 @@ Running specialty simulations
 =============================
 
 .. warning::
-	Running CO2 and CH4 specialty simulations in WRF-GC is a feature available in WRF-GC 3.0 or later. This version of WRF-GC is currently work in progress and not ready for release.
+	Running CO2 and CH4 specialty simulations in WRF-GC is a feature available in WRF-GC 3.0 or later. This is an experimental feature, please send feedback on this feature to Haipeng Lin (hplin at seas.harvard.edu).
 
 .. warning::
 	Reminder: Do not copy WRF-GC source code directories. When moving directories, or starting a different type of simulation, always extract a fresh copy of WRF and WRF-GC (``chem`` directory) source code without copying the old code. Once the compile process is finished, that copy of WRF-GC is fixed to the directory path it was compiled in and cannot be easily moved.

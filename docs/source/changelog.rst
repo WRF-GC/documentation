@@ -1,26 +1,24 @@
 Changelog
 ==========
-v3.0
-----------
-* Add support for History diagnostics and HEMCO diagnostics.
 
-2022 Technology Preview - work in progress
-------------------------------------------
-* *Currently unreleased*. This technology preview is targeting a 3.0 release with GEOS-Chem 14.1.0.
+v3.0 (April 22, 2024)
+---------------------
 * Feature: Supports **GEOS-Chem 14.1.1**, **KPP 3.0.0**, and **HEMCO 3.6.2**.
 * Feature: Supports **WRF version 4.4**.
 * Feature: Infrastructure for specialty simulations. Now can install couplers for fullchem, ch4, and co2 using the ``install_registry`` command.
-* Feature: Compiles GEOS-Chem 13+ without using CMake by maintaining the legacy GNU infrastructure.
-* Feature: Auto-patching of ``wrf_io.F90`` to support more than 3,000 variables in ``wrfbdy``.
-* Feature: No longer inputs initial/boundary conditions for non-advected species through ``i0{12}`` switch in ``registry.chem``.
+* Feature: Add support for History diagnostics and HEMCO diagnostics ("WRF-GC 3.0 Diagnostics") using pNETCDF.
+* Technical Update: Compiles GEOS-Chem 13+ without using CMake by maintaining the legacy GNU infrastructure.
+* Technical Update: Auto-patching of ``wrf_io.F90`` to support more than 3,000 variables in ``wrfbdy``.
+* Technical Update: No longer inputs initial/boundary conditions for non-advected species through ``i0{12}`` switch in ``registry.chem``.
 * Enhancement: Recompile no longer wipes configuration files by automatically calling ``make install_configs``. Configuration files are installed **once** using ``make install_registry`` or others for specialty simulations.
 * Enhancement: New coupler species generation infrastructure shared with CESM2-GC.
 * Enhancement: Support for ``QV2M`` met field for online blowing snow emissions.
 * Bugfix: Fix stack corruption issue in ``chemics_init`` coordinates.
 * Bugfix: More robust support for ``get_last_gas`` due to WRFv4 upstream updates.
 * Bugfix: Month-boundary HEMCO emissions missing timesteps.
-* Bugfix: ParaNOx stability issue via upstream GEOS-Chem 14.0.1 fix. Note that according to `Colombi et al., 2022 ACPD (in review) <https://egusphere.copernicus.org/preprints/2022/egusphere-2022-1366/>`_ it may not be necessary to use ParaNOx for high-resolution simulations with WRF-GC.
+* Bugfix: ParaNOx stability issue via upstream GEOS-Chem 14.0.1 fix. Note that according to `Colombi et al., 2023 ACP <https://acp.copernicus.org/articles/23/4031/2023/>`_ it may not be necessary to use ParaNOx for high-resolution simulations with WRF-GC.
 * Bugfix: Initial condition input bug for nested domain(s).
+
 
 v2.0.2 (September 30, 2022)
 ----------------------------
