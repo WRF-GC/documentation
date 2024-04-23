@@ -22,7 +22,7 @@ Not supported:
 For more information about ``History diagnostics``, please refer to the `GEOS-Chem documentation <https://wiki.seas.harvard.edu/geos-chem/index.php/Overview_of_History_diagnostics>`_.
 
 .. note::
-	``SpeciesConc`` collection in GEOS-Chem is still output through ``wrfout``, it is not available in ``HISTORY.rc``. Turning on this collection in ``HISTORY.rc`` may cause errors. 
+	``SpeciesConc`` collection in GEOS-Chem is still output through ``wrfout``, it is not available in ``HISTORY.rc``. Turning on this collection in ``HISTORY.rc`` may cause errors. ``KppDiags`` is needed for fullchem to run, keep it on in ``HISTORY.rc`` when run fullchem mode.
 
 For HEMCO diagnostics, we current only support ``instantaneous`` mode, for more information, please refer to `HEMCO diagnostics <https://hemco.readthedocs.io/en/stable/hco-ref-guide/diagnostics.html>`_.
 
