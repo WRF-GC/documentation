@@ -118,7 +118,7 @@ Below is an example environment file using the Intel compilers + OpenMPI. The fo
 * ``JASPERLIB`` needs to point to your JasPer install's ``lib`` folder
 * ``JASPERINC`` needs to point to your JasPer install's ``include`` folder
 * ``NETCDF_HOME`` and ``NETCDF_FORTRAN_HOME`` point to NetCDF-C and NetCDF-Fortran, respectively. Can be the same as ``$NETCDF``
-* ``PNETCDF``(optional) needs to point to your PNETCDF install (inside this path there should be ``bin``, ``lib``, ``include``), if not defined, the diagnostic function of WRF-GC 3.0 will not be enabled.
+* ``PNETCDF`` (optional) needs to point to your PNETCDF install (inside this path there should be ``bin``, ``lib``, ``include``), if not defined, the diagnostic function of WRF-GC 3.0 will not be enabled.
 
 If you are using the GNU compilers (``gcc`` and ``gfortran``), you also need to edit:
 
