@@ -22,11 +22,11 @@ Not supported:
 For more information about ``History diagnostics``, please refer to the `GEOS-Chem documentation <https://wiki.seas.harvard.edu/geos-chem/index.php/Overview_of_History_diagnostics>`_.
 
 .. note::
-	``SpeciesConc`` collection in GEOS-Chem is still output through ``wrfout``, it is not available in ``HISTORY.rc``. Turning on this collection in ``HISTORY.rc`` may cause errors.
+	``SpeciesConc`` collection in GEOS-Chem is still output through ``wrfout``, it is not available in ``HISTORY.rc``. Turning on this collection in ``HISTORY.rc`` may cause errors. ``KppDiags`` is needed for fullchem to run, keep it on in ``HISTORY.rc`` when run fullchem mode.
 
 For HEMCO diagnostics, we current only support ``instantaneous`` mode, for more information, please refer to `HEMCO diagnostics <https://hemco.readthedocs.io/en/stable/hco-ref-guide/diagnostics.html>`_.
 
-Legacy (WRF-GC 2.0) diagnostics are still supported and can be output through ``wrfout``, although they are considerably more limited than the new functionality.
+Legacy (WRF-GC 2.0) diagnostics output method conflicts with the new functionality and has been commented out. If you wish to use it, you can uncomment in ``wrfgc_convert_state_mod.F``, although they are considerably more limited than the new functionality.
 
 For WRF-GC 2.0
 ----------------
