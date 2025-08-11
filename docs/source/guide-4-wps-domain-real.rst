@@ -45,7 +45,7 @@ The first step is to describe your simulation domain. Example entries for the ``
 	 e_we = 245,
 	 e_sn = 181,
 
-	 geog_data_res = 'default', 'default',
+	 geog_data_res = 'gtopo_2m+usgs_2m+nesdis_greenfrac+2m+albedo_ncep+maxsnowalb_ncep', 'gtopo_2m+usgs_2m+nesdis_greenfrac+2m+albedo_ncep+maxsnowalb_ncep',
 	 dx        = 27000,
 	 dy        = 27000,
 	 map_proj  = 'mercator',
@@ -66,6 +66,9 @@ The configuration options you need to change with a brief description are listed
 * ``map_proj``: Map projection. **Only mercator and lat-lon (unrotated regular latitude-longitude) are supported currently in WRF-GC.**
 * ``ref_lat``, ``ref_lon``, ``truelat1``, ``stand_lon`` etc. are grid location parameters (where your regional grid is located in). Refer to the WRF User's Guide.
 * ``geog_data_path``: Path to the static WPS input data you downloaded in the previous steps.
+
+.. note::
+    Starting in WRF version 4, the "default" geographical data has changed and uses the MODIS dataset unsupported by WRF-GC at this time. For WRFv4, you may need to use ``geog_data_res`` with the USGS dataset to get correct dry deposition velocities: ``gtopo_2m+usgs_2m+nesdis_greenfrac+2m+albedo_ncep+maxsnowalb_ncep`` is the recommended setting.
 
 Once ``namelist.wps`` is configured, you can run GEOGRID:
 
