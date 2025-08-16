@@ -1,6 +1,19 @@
 Changelog
 ==========
 
+v3.0.1 (Aug 16, 2025)
+---------------------
+* Bugfix: Fix missing MEGAN biogenic emissions when using fractional minute timesteps.
+* Bugfix: Fix leaf area index (LAI) data incorrectly passed to GEOS-Chem from coupler resulting in dry deposition issues.
+* Bugfix: Backport upstream HEMCO fix for MESSy vertical regridding for emissions.
+* Bugfix: Build dependency fixes.
+
+v3.0 r2 (Oct 27, 2024)
+---------------------
+* Enhancement: Update specialty simulation couplers to use pnetCDF-based diagnostic output.
+* Bugfix: Update WRF-GC diagnostic support for multiple domains.
+* Bugfix: Build dependency fixes.
+
 v3.0 (April 22, 2024)
 ---------------------
 * Feature: Supports **GEOS-Chem 14.1.1**, **KPP 3.0.0**, and **HEMCO 3.6.2**.
