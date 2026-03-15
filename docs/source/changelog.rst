@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+v3.0.2 (Mar 14, 2026)
+---------------------
+* Enhancement: GNU 11.3.1 compiler compatibility (Yuanjian Zhang, WUSTL).
+* Enhancement: Performance improvements to PNETCDF diagnostics.
+* Bugfix: Chemistry timestep setting (chemdt) was not being applied.
+* Bugfix: Fix landmask mapping.
+
 v3.0.1 (Aug 16, 2025)
 ---------------------
 * Bugfix: Fix missing MEGAN biogenic emissions when using fractional minute timesteps.
