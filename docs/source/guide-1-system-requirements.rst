@@ -25,22 +25,6 @@ Below are some specific guidance, but if you already know how to set up librarie
 
 **For the final environmental configuration file,** see :ref:`Environmental configuration file (for reference)` for all the environmental variables that need to be defined.
 
-Running with a Container
-^^^^^^^^^^^^^^^^^^^^^
-This Apptainer/Singularity image provides a GCC/OpenMPI build environment for WRF-GC.
-
-.. code-block:: bash
-
-	apptainer pull wrfgc-gcc-dev_2026-06-23.sif oras://ghcr.io/topleo/wrfgc-gcc-dev:2026-06-23
-	apptainer shell wrfgc-gcc-dev_2026-06-23.sif
-	#for WRF-GC compilatoin, set:
-	export WRF_EM_CORE=1
-	export WRF_NMM_CORE=0
-	export WRF_CHEM=1
-	export ESMF_COMPILER=gfortran
-	export ESMF_COMM=openmpi
-Then follow the instructions in the download chapter.
-
 Running on a cluster
 ^^^^^^^^^^^^^^^^^^^^^
 
@@ -66,6 +50,24 @@ Your system administrator may have installed these packages. For example, on the
 		ln -sf $NETCDF_FORTRAN_HOME/include/* include/
 
 	Then see the environment configuration above to point WRF-GC to the libraries.
+
+Running with a Container
+^^^^^^^^^^^^^^^^^^^^^
+
+This Apptainer/Singularity image provides a GCC/OpenMPI build environment for WRF-GC:
+
+.. code-block:: bash
+
+	apptainer pull wrfgc-gcc-dev_2026-06-23.sif oras://ghcr.io/topleo/wrfgc-gcc-dev:2026-06-23
+	apptainer shell wrfgc-gcc-dev_2026-06-23.sif
+	# to compile WRF-GC, set:
+	export WRF_EM_CORE=1
+	export WRF_NMM_CORE=0
+	export WRF_CHEM=1
+	export ESMF_COMPILER=gfortran
+	export ESMF_COMM=openmpi
+
+Then follow the instructions in the download chapter.
 
 Running on AWS or with Spack
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

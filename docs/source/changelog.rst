@@ -1,6 +1,10 @@
 Changelog
 ==========
 
+v3.0.3 (Jun 24, 2026)
+---------------------
+* Bugfix: Assorted bug fixes.
+
 v3.0.2 (Mar 14, 2026)
 ---------------------
 * Enhancement: GNU 11.3.1 compiler compatibility (Yuanjian Zhang, WUSTL).
